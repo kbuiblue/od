@@ -21,5 +21,6 @@ public interface ProductInfoMapper {
     default String mapCountryId(Countries countries) {
         return countries.getCountryId();
     }
+
     List<ProductInfoDTO> toDTOs(List<ProductInfo> productInfoList);
 }

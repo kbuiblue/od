@@ -19,10 +19,11 @@ import java.util.List;
 public class ProductInfoService {
     private final ProductInfoRepository productInfoRepository;
     private final ProductInfoMapper productInfoMapper;
-    private final CountriesRepository countryRepository;
+    private final CountriesRepository countriesRepository;
 
+    //POST REQUESTS
     public ProductInfoDTO createProductInfo(ProductInfoDTO productCreationDTO) {
-        Countries countries = countryRepository.findById(productCreationDTO.getCountryId())
+        Countries countries = countriesRepository.findById(productCreationDTO.getCountryId())
                 .orElseThrow(AllExceptions::CountryNotFound);
 
         ProductInfo productInfo = ProductInfo.builder()
@@ -40,12 +41,78 @@ public class ProductInfoService {
 
         return productInfoMapper.toDTO(savedProductInfo);
     }
+    //PUT REQUESTS
+    public ProductInfoDTO updateProductInfo(Long productId, ProductInfoDTO productUpdateDTO) {
+        ProductInfo productInfo = productInfoRepository.findById(productId)
+                .orElseThrow(AllExceptions::ProductInfoNotFound);
 
+        Countries countries = countriesRepository.findById(productUpdateDTO.getCountryId())
+                .orElseThrow(AllExceptions::CountryNotFound);
+
+        productInfo.setStockPrice(productUpdateDTO.getStockPrice());
+        productInfo.setProductBrand(productUpdateDTO.getProductBrand());
+        productInfo.setProductName(productUpdateDTO.getProductName());
+        productInfo.setProductYear(productUpdateDTO.getProductYear());
+        productInfo.setProductType(productUpdateDTO.getProductType());
+        productInfo.setProductCondition(productUpdateDTO.getProductCondition());
+        productInfo.setDescription(productUpdateDTO.getDescription());
+        productInfo.setCountryId(countries);
+
+        ProductInfo savedProductInfo = productInfoRepository.save(productInfo);
+
+        return productInfoMapper.toDTO(savedProductInfo);
+    }
+
+
+    //DELETE REQUESTS
+    public void deleteProductInfoById(Long productId) {
+        productInfoRepository.deleteById(productId);
+    }
+
+
+    //GET REQUESTS
     public List<ProductInfoDTO> getAllProductInfoByProductBrand(String productBrand) {
         List<ProductInfo> productInfoList = productInfoRepository.getAllProductInfoByProductBrand(productBrand)
                 .orElseThrow(AllExceptions::ProductInfoNotFound);
 
+        if(productInfoList.isEmpty())
+            throw AllExceptions.ProductInfoNotFound();
+
         return productInfoMapper.INSTANCE.toDTOs(productInfoList);
     }
 
+    public List<ProductInfoDTO> getAllProductInfoByProductCondition(String productCondition) {
+        List<ProductInfo> productInfoList = productInfoRepository.getAllProductInfoByProductCondition(productCondition)
+                .orElseThrow(AllExceptions::InvalidInput);
+
+        if(productInfoList.isEmpty())
+            throw AllExceptions.InvalidInput();
+
+        return productInfoMapper.INSTANCE.toDTOs(productInfoList);
+    }
+
+    public List<ProductInfoDTO> getAllProductInfoByProductType(String productType) {
+        List<ProductInfo> productInfoList = productInfoRepository.getAllProductInfoByProductType(productType)
+                .orElseThrow(AllExceptions::InvalidInput);
+
+        if(productInfoList.isEmpty())
+            throw AllExceptions.InvalidInput();
+
+        return productInfoMapper.INSTANCE.toDTOs(productInfoList);
+    }
+
+    public List<ProductInfoDTO> getAllProductInfoByCountryId(String countryId) {
+        Countries countries = countriesRepository.findById(countryId)
+                .orElseThrow(AllExceptions::CountryNotFound);
+
+        List<ProductInfo> productInfoList = productInfoRepository.getAllProductInfoByCountryId(countries)
+                .orElseThrow(AllExceptions::InvalidInput);
+
+        return productInfoMapper.INSTANCE.toDTOs(productInfoList);
+    }
+
+    public ProductInfoDTO getProductInfoById(Long id) {
+        return productInfoMapper.toDTO(productInfoRepository.findById(id)
+                .orElseThrow(AllExceptions::ProductInfoNotFound));
+    }
 }

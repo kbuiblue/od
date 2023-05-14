@@ -16,7 +16,7 @@ public class ProductInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
-    @Column
+    @Column(precision = 10, scale = 2)
     private Double stockPrice;
     @Column
     private String productBrand;

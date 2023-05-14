@@ -1,7 +1,7 @@
 INSERT INTO public.product_info 
-(inventory_status, stock_price, product_brand, product_name, product_condition, product_type, product_year, country_id, description)
+(stock_price, product_brand, product_name, product_condition, product_type, product_year, country_id, description)
 values
-(1,11000,'Gibson','Gibson EDS-1275 Walnut Vintage 1970','Good','Electric guitars',1970,'US','BODY
+(11000,'Gibson','Gibson EDS-1275 Walnut Vintage 1970','Good','Electric guitars',1970,'US','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Mahogany
@@ -43,7 +43,7 @@ CONTROLS: 1 Volume/Tone for each neck
 NOTES
 
 Comes with Hardshell Case.'),
-(1,9500,'Fender','Fender Custom Shop Master Built Series 1962 Stratocaster Relic by Jason Smith','Excellent','Electric guitars',2016,'US','BODY
+(9500,'Fender','Fender Custom Shop Master Built Series 1962 Stratocaster Relic by Jason Smith','Excellent','Electric guitars',2016,'US','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Alder
@@ -84,7 +84,7 @@ CONTROLS: 1 x master volume, 2 x master tone
 NOTES
 
 Comes with Original Hardshell Case, COA'),
-(1,6000,'Fender','Fender Custom Shop Classic Player Stratocaster Masterbuilt Art Esparza','Mint','Electric guitars',2002,'US','BODY
+(6000,'Fender','Fender Custom Shop Classic Player Stratocaster Masterbuilt Art Esparza','Mint','Electric guitars',2002,'US','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Alder
@@ -117,7 +117,7 @@ CONTROLS: 1 x master volume, 2 x master tone.
 NOTES
 
 Comes with Original Hardshell Case, COA, Case candy.'),
-(1,6000,'Charvel','Charvel EVH Art Series Red','Very Good','Electric guitars',2004,'US','BODY
+(6000,'Charvel','Charvel EVH Art Series Red','Very Good','Electric guitars',2004,'US','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Basswood
@@ -154,7 +154,7 @@ CONTROLS: 1 x master volume
 NOTES
 
 Comes with Original Hardshell Case'),
-(1,5500,'Paoletti ','Paoletti Loft Series Stratospheric HSS Cream w/Reverse Headstock','Mint','Electric guitars',2019,'IT','BODY
+(5500,'Paoletti ','Paoletti Loft Series Stratospheric HSS Cream w/Reverse Headstock','Mint','Electric guitars',2019,'IT','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Reclaimed Chestnut
@@ -195,7 +195,7 @@ CONTROLS: 1 x master volume, 2 x master tone. Shotgun shell knobs.
 NOTES
 
 Comes with Original Hardshell Case, COA & Case candy'),
-(1,5000,'Gibson','Gibson True Historic ''60 Les Paul','Excellent','Electric guitars',2015,'US','BODY
+(5000,'Gibson','Gibson True Historic ''60 Les Paul','Excellent','Electric guitars',2015,'US','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Mahogany
@@ -235,7 +235,7 @@ CONTROLS: 2 x master volume, 2 x master tone
 NOTES
 
 Comes with Original Hardshell Case, COA & Case candy'),
-(1,5000,'Jackson','Jackson Custom Shop SL2H Soloist Gravity Yellow w/ Blue Pickups','Mint','Electric guitars',2019,'US','BODY
+(5000,'Jackson','Jackson Custom Shop SL2H Soloist Gravity Yellow w/ Blue Pickups','Mint','Electric guitars',2019,'US','BODY
 
 BODY TYPE: Solid body 
 BODY MATERIAL: Alder
@@ -274,7 +274,7 @@ CONTROLS: 1 x master volume, 1 x master tone
 NOTES
 
 Comes with Original Hardshell Case, Case candy.'),
-(1,5000,'Vigier','Vigier Excalibur Supra Rock Art','Mint','Electric guitars',2019,'FR','BODY
+(5000,'Vigier','Vigier Excalibur Supra Rock Art','Mint','Electric guitars',2019,'FR','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Natural Aged Alder
@@ -315,7 +315,7 @@ CONTROLS: 1 x master volume, 1 x master tone
 NOTES
 
 Comes with Original Hardshell Case, COA & Case candy'),
-(1,3000,'Fender','Fender American Stratocaster Vintage 1977 Olympic White','Very Good','Electric guitars',1977,'US','BODY
+(3000,'Fender','Fender American Stratocaster Vintage 1977 Olympic White','Very Good','Electric guitars',1977,'US','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Ash
@@ -351,7 +351,7 @@ Comes with Original Hardshell Case.
 The neck is made in 1972
 Fender introduced the 5-way switch in 1977, so it''s possible the guitar was made in early 1977 when they were still using 3-way switches. (*)
 Fender switched from white to black plastic (pickguard, pickups, knobs,..) around 1975, and during this transition guitars may be seen with a mix & match of white and black plastic parts. A 1977 Strat could have mixed parts, but any later should be all black.'),
-(1,2800,'Ibanez','Ibanez J Custom RRG7 CHG','Mint','Electric guitars',2010,'JP','BODY
+(2800,'Ibanez','Ibanez J Custom RRG7 CHG','Mint','Electric guitars',2010,'JP','BODY
 
 BODY TYPE: Solid body 
 BODY MATERIAL: African Mahogany w/ quilted maple top
@@ -362,7 +362,7 @@ NECK
 
 NECK MATERIAL: 5-piece maple/ walnut w/ VelveTouch finish
 NECK SHAPE: Super Wizard
-RADIUS: 12-16’’ Compound
+RADIUS: 12-16’ Compound
 1st NECK THICKNESS: .680''''
 12st NECK THICKNESS: .770''''
 FINGERBOARD MATERIAL: Rosewood
@@ -390,7 +390,7 @@ CONTROLS: 1 x master volume, 1 x master tones
 NOTES
 
 Comes with Original Hardcase, COA'),
-(1,2500,'Ibanez','Ibanez JS2410 Joe Satriani Signature Electric Guitar w/case, Muscle Car Orange','Brand New','Electric guitars',2021,'JP','BODY
+( 2500,'Ibanez','Ibanez JS2410 Joe Satriani Signature Electric Guitar w/case, Muscle Car Orange','Brand New','Electric guitars',2021,'JP','BODY
 
 BODY TYPE: Solid body 
 BODY MATERIAL: Alder
@@ -431,7 +431,7 @@ NOTES
 
 Hi-pass filter on volume control (push/pull)
 Coil-tap switch on tone control (push/pull)'),
-(1,1700,'PRS','2004 PRS McCarty 10 Top with Solid Rosewood Neck - Vintage Yellow','Very Good','Electric guitars',2004,'US','BODY
+(1700,'PRS','2004 PRS McCarty 10 Top with Solid Rosewood Neck - Vintage Yellow','Very Good','Electric guitars',2004,'US','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Mahogany
@@ -465,7 +465,7 @@ NOTES
 
 Comes with Hardshell Case
 Tuners is not original (*)'),
-(1,1700,'Vigier','Vigier Excalibur Original Black Sparkle','Very Good','Electric guitars',2021,'FR','Body: Two center-joined pieces of solid, naturally aged Alder
+(1700,'Vigier','Vigier Excalibur Original Black Sparkle','Very Good','Electric guitars',2021,'FR','Body: Two center-joined pieces of solid, naturally aged Alder
 Neck: Maple naturally dried for 3 years
 Finish: Gloss
 Finish Color: Black Sparkle
@@ -478,7 +478,7 @@ Number of frets: 24 + zero fret
 Pickups: SH5/SSL6/TB5
 Bridge: Vigier tremolo
 Include Hardshell Hiscox Case.'),
-(1,1000,'ESP','ESP LTD EC-1000','Brand New','Electric guitars',2023,'KR','BODY        
+(1000,'ESP','ESP LTD EC-1000','Brand New','Electric guitars',2023,'KR','BODY
 Body Type: Solid body
 Body Shape: Eclipse
 Body Material: Mahogany
@@ -506,7 +506,7 @@ Neck Pickup: EMG 60 Humbucker
 Bridge Pickup: EMG 81 Humbucker
 Controls: 2 x volume, 1 x tone
 Switching: 3-way toggle pickup switch'),
-(1,800,'PRS','PRS SE Silver Sky Electric Guitar, Stone Blue','Brand New','Electric guitars',2022,'ID','BODY
+(800,'PRS','PRS SE Silver Sky Electric Guitar, Stone Blue','Brand New','Electric guitars',2022,'ID','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Poplar
@@ -546,7 +546,7 @@ CONTROLS: 1 x master volume, 2 x master tone
 NOTES
 
 Comes with PRS GigBag.'),
-(1,600,'PRS','PRS SE 245 Electric Guitar - Vintage Sunburst','Brand New','Electric guitars',2021,'ID','BODY
+(600,'PRS','PRS SE 245 Electric Guitar - Vintage Sunburst','Brand New','Electric guitars',2021,'ID','BODY
 
 BODY TYPE: Solid body
 BODY MATERIAL: Mahogany
@@ -586,7 +586,7 @@ CONTROLS: 2 x master volume, 2 x master tone
 NOTES
 
 Comes with PRS Gigbag'),
-(1,600,'Epiphone','Les Paul Standard 50s Heritage Cherry Sunburst','Brand New','Electric guitars',2023,'CN','BODY
+(600,'Epiphone','Les Paul Standard 50s Heritage Cherry Sunburst','Brand New','Electric guitars',2023,'CN','BODY
 Model: Epiphone Les Paul Standard 50s, Heritage Cherry Sunburst
 Shape: Les Paul Standard
 Material: Mahogany
@@ -609,7 +609,7 @@ Plating: Nickel
 Neck Pickup: Probucker-2™
 Bridge Pickup: Probucker-3™
 Controls: 2- Volume, 2- Tone CTS Electronics 50s Style Wiring'),
-(1,600,'Epiphone','Epiphone 1959 Les Paul Standard Outfit Electric Guitar, Aged Dark Burst','Brand New','Electric guitars',2022,'CN','BODY
+(600,'Epiphone','Epiphone 1959 Les Paul Standard Outfit Electric Guitar, Aged Dark Burst','Brand New','Electric guitars',2022,'CN','BODY
 Body Material: Mahogany
 Body Shape: Les Paul
 Colour: Aged Dark Burst
@@ -637,7 +637,7 @@ Bridge Pickup: Gibson BurstBucker 3
 Neck Pickup: Gibson BurstBucker 2
 Controls: 2 Volume, 2-Tone, CTS Pots, Mallory Capacitors, 50s Era Wiring
 Pickup Switching: 3-Way Switchcraft Toggle'),
-(1,500,'ESP','ESP LTD EC-256','Mint','Electric guitars',2020,'VN','BODY        
+(500,'ESP','ESP LTD EC-256','Mint','Electric guitars',2020,'VN','BODY
 Body Type: Solid body
 Body Shape: Eclipse
 Body Material: Mahogany
@@ -665,7 +665,7 @@ Neck Pickup: ESP LH-150N Humbucker
 Bridge Pickup: ESP LH-150B Humbucker
 Controls: 2 x volume, 1 x tone (push/pull coil-tap)
 Switching: 3-way toggle pickup switch'),
-(1,400,'Ibanez','Ibanez AZES40-MGR Electric Guitar, Mint Green','Brand New','Electric guitars',2023,'ID','BODY
+(400,'Ibanez','Ibanez AZES40-MGR Electric Guitar, Mint Green','Brand New','Electric guitars',2023,'ID','BODY
 
 BODY TYPE: Solid body 
 BODY MATERIAL: Poplar

@@ -24,7 +24,7 @@ public class OrderDetails {
     @JoinColumn(name = "product_id")
     private ProductInfo productId;
 
-    @Column
+    @Column(precision = 10, scale = 2)
     private Integer productPrice;
 
     @Column

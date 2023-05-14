@@ -13,14 +13,14 @@ public class AllExceptions {
     }
 
     public static ResponseException InvalidInput() {
-        return badRequest("INVALID INPUT:", "Invalid input, please try again.");
+        return badRequest("INVALID INPUT", "Invalid input, please try again.");
     }
 
     public static ResponseException ProductInfoNotFound() {
-        return notFound("PRODUCT NOT FOUND:", "Oops! This product does not exist.");
+        return notFound("PRODUCT NOT FOUND", "Oops! This product does not exist.");
     }
 
     public static ResponseException CountryNotFound() {
-        return notFound("COUNTRY NOT FOUND:", "Sorry, this country does not exist in our database.");
+        return notFound("COUNTRY NOT FOUND", "Sorry, this country does not exist in our database.");
     }
 }

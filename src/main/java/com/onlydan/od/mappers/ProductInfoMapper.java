@@ -11,7 +11,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductInfoMapper {
     ProductInfoMapper INSTANCE = Mappers.getMapper(ProductInfoMapper.class);
     @Mapping(target = "countryId", source = "countryId", qualifiedByName = "mapCountryId")

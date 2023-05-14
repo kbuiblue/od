@@ -3,7 +3,6 @@ package com.onlydan.od.mappers;
 import com.onlydan.od.dto.CountriesDTO;
 import com.onlydan.od.entities.Countries;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 

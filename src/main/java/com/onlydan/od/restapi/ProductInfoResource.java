@@ -3,12 +3,14 @@ package com.onlydan.od.restapi;
 import com.onlydan.od.dto.ProductInfoDTO;
 import com.onlydan.od.services.ProductInfoService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class ProductInfoResource implements ProductInfoAPI {
@@ -38,6 +40,7 @@ public class ProductInfoResource implements ProductInfoAPI {
     //GET
     @Override
     public ResponseEntity<List<ProductInfoDTO>> getProductInfoByProductBrand(String productBrand) {
+        log.info("get product info by product brand {} ", productBrand);
         return ResponseEntity.ok(productInfoService.getAllProductInfoByProductBrand(productBrand));
     }
 

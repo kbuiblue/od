@@ -1,5 +1,7 @@
 package com.onlydan.od.entities;
 
+import com.onlydan.od.enums.InventoryStatuses;
+import com.onlydan.od.enums.ShippingStatuses;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,13 +21,11 @@ public class Inventory {
     @JoinColumn(name = "product_id")
     private ProductInfo productId;
 
-    @ManyToOne
-    @JoinColumn(name = "shipping_status_id")
-    private ShippingStatuses shippingStatusId;
+    @Enumerated(EnumType.STRING)
+    private ShippingStatuses shippingStatus;
 
-    @ManyToOne
-    @JoinColumn(name = "inventory_status_id")
-    private InventoryStatuses inventoryStatusId;
+    @Enumerated(EnumType.STRING)
+    private InventoryStatuses inventoryStatus;
 
     @OneToOne
     @JoinColumn(name = "stock_change_id")

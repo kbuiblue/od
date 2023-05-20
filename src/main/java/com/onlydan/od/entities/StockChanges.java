@@ -1,5 +1,6 @@
 package com.onlydan.od.entities;
 
+import com.onlydan.od.enums.StockChangeTypes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +20,8 @@ public class StockChanges {
     @Column
     private LocalDate changeDate;
 
-    @Column
-    private String changeType;
+    @Enumerated(EnumType.STRING)
+    private StockChangeTypes changeType;
 
     @Column
     private Integer changeAmount;

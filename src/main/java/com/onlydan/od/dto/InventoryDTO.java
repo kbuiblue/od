@@ -1,8 +1,9 @@
 package com.onlydan.od.dto;
 
-import com.onlydan.od.entities.InventoryStatuses;
-import com.onlydan.od.entities.ShippingStatuses;
+
 import com.onlydan.od.entities.StockChanges;
+import com.onlydan.od.enums.InventoryStatuses;
+import com.onlydan.od.enums.ShippingStatuses;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

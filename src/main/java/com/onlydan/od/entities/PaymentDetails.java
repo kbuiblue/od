@@ -1,5 +1,6 @@
 package com.onlydan.od.entities;
 
+import com.onlydan.od.enums.PaymentStatuses;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,8 @@ public class PaymentDetails {
     @JoinColumn(name = "account_id")
     private Accounts accountId;
 
-    @ManyToOne
-    @JoinColumn(name = "payment_status_id")
-    private PaymentStatuses paymentStatusId;
+    @Enumerated(EnumType.STRING)
+    private PaymentStatuses paymentStatus;
 
     @ManyToOne
     @JoinColumn(name = "payment_method_id")

@@ -1,14 +1,13 @@
 package com.onlydan.od.enums;
 
-public enum ShippingStatuses {
-    STARTED(1),
-    IN_TRANSIT(2),
-    RETURNING(3),
-    DELIVERED(4);
+public enum RoleNames {
+    ADMIN(1),
+    EDITOR(2),
+    USER(3);
 
     private final int value;
 
-    ShippingStatuses(int value) {
+    RoleNames(int value) {
         this.value = value;
     }
 

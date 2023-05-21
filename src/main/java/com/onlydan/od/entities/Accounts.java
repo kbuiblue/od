@@ -3,6 +3,7 @@ package com.onlydan.od.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -19,6 +20,7 @@ public class Accounts {
     @Column
     private Boolean isActive;
 
+    @CreatedDate
     @Column
     private LocalDate creationDate;
 

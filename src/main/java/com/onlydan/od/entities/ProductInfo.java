@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Slf4j
@@ -30,6 +31,9 @@ public class ProductInfo {
     private String productType;
     @Column
     private Integer productYear;
+
+    @OneToMany(mappedBy = "productId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<OrderDetails> orderDetails;
 
     @ManyToOne
     @JoinColumn(name = "country_id")

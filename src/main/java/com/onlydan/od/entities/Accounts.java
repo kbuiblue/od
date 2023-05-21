@@ -1,5 +1,7 @@
 package com.onlydan.od.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.onlydan.od.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Data
@@ -14,6 +17,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Accounts {
     @Id
+    @Column(name = "account_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
 
@@ -28,11 +32,11 @@ public class Accounts {
     private String accountName;
 
     @Column
+    @JsonIgnore
     private String accountPassword;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Roles roleId;
+    @OneToMany(mappedBy = "accounts", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<RoleAssignment> roles;
 
     @Column
     private String firstName;
@@ -49,6 +53,6 @@ public class Accounts {
     @Column
     private String email;
 
-    @Column
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 }

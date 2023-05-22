@@ -1,4 +1,4 @@
-package com.onlydan.od.enums;
+package com.onlydan.od.security.entity;
 
 public enum Roles {
     ADMIN(1),

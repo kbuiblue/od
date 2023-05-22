@@ -2,6 +2,7 @@ package com.onlydan.od.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.onlydan.od.enums.Gender;
+import com.onlydan.od.security.entity.RoleAssignment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

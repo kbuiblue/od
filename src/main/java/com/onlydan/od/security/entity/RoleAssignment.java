@@ -1,6 +1,6 @@
-package com.onlydan.od.entities;
+package com.onlydan.od.security.entity;
 
-import com.onlydan.od.enums.Roles;
+import com.onlydan.od.entities.Accounts;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;

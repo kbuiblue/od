@@ -1,6 +1,6 @@
 package com.onlydan.od.authentication;
 
-import com.onlydan.od.security.JwtRequest;
+import com.onlydan.od.security.jwt.JwtRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.onlydan.od.security;
+package com.onlydan.od.security.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +12,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class JwtRequest implements Serializable {
-    private String username;
+    private String accountName;
     private String password;
 }

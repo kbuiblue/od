@@ -12,6 +12,10 @@ public class AllExceptions {
         return new ResponseException(messageKey, message, HttpStatus.BAD_REQUEST);
     }
 
+    public static ResponseException internalServerError(String messageKey, String message) {
+        return new ResponseException(messageKey, message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     public static ResponseException InvalidInput() {
         return badRequest("INVALID INPUT", "Invalid input, please try again.");
     }

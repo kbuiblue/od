@@ -19,12 +19,14 @@ public class ProductInfoResource implements ProductInfoAPI {
     // POST
     @Override
     public ResponseEntity<ProductInfoDTO> createProductInfo(ProductInfoDTO productInfoDTO) {
+        log.info("Product id #{} added", productInfoDTO.getProductId());
         ProductInfoDTO productInfoDto = productInfoService.createProductInfo(productInfoDTO);
         return ResponseEntity.created(URI.create("/api/product-info" + productInfoDto.getProductId())).body(productInfoDto);
     }
     // PUT
     @Override
     public ResponseEntity<ProductInfoDTO> updateProductInfo(Long productId, ProductInfoDTO productInfoDTO) {
+        log.info("Product id #{} updated", productId);
         ProductInfoDTO productInfoDto = productInfoService.updateProductInfo(productId, productInfoDTO);
         return ResponseEntity.ok(productInfoDto);
     }
@@ -33,6 +35,7 @@ public class ProductInfoResource implements ProductInfoAPI {
 
     @Override
     public ResponseEntity<Void> deleteProductInfoById(Long productId) {
+        log.info("Product id #{} deleted", productId);
         productInfoService.deleteProductInfoById(productId);
         return ResponseEntity.noContent().build();
     }
@@ -40,7 +43,7 @@ public class ProductInfoResource implements ProductInfoAPI {
     //GET
     @Override
     public ResponseEntity<List<ProductInfoDTO>> getProductInfoByProductBrand(String productBrand) {
-        log.info("get product info by product brand {} ", productBrand);
+        log.info("Get product info by product brand {} ", productBrand);
         return ResponseEntity.ok(productInfoService.getAllProductInfoByProductBrand(productBrand));
     }
 

@@ -27,4 +27,8 @@ public class AllExceptions {
     public static ResponseException CountryNotFound() {
         return notFound("COUNTRY NOT FOUND", "Sorry, this country does not exist in our database.");
     }
+
+    public static ResponseException NameAlreadyExists() {
+        return badRequest("NAME ALREADY EXISTS", "Sorry, this account name already exists.");
+    }
 }

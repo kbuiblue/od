@@ -2,6 +2,7 @@ package com.onlydan.od.authentication.impl;
 
 import com.onlydan.od.authentication.AuthController;
 import com.onlydan.od.entities.Accounts;
+import com.onlydan.od.exceptions.AllExceptions;
 import com.onlydan.od.repositories.AccountsRepository;
 import com.onlydan.od.repositories.RoleAssignmentRepository;
 import com.onlydan.od.security.config.WebSecurityConfig;
@@ -62,7 +63,7 @@ public class AuthControllerImpl implements AuthController {
     public ResponseEntity<?> signupAccount(JwtRequest signupRequest) {
         // Check if the user already exists
         if (accountsRepository.findByAccountName(signupRequest.getAccountName()).isPresent())
-            return ResponseEntity.badRequest().body("Username already exists");
+            return ResponseEntity.badRequest().body(AllExceptions.NameAlreadyExists());
 
         PasswordEncoder encoder = webSecurityConfig.passwordEncoder();
         // Hash the password and create a new user
@@ -73,24 +74,7 @@ public class AuthControllerImpl implements AuthController {
         RoleAssignment newRole = new RoleAssignment(Roles.ROLE_USER, newAccount);
         roleAssignmentRepository.save(newRole);
 
-        Authentication authentication =
-                authenticationManager.authenticate
-                        (new UsernamePasswordAuthenticationToken(
-                                signupRequest.getAccountName(),
-                                signupRequest.getPassword()));
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateToken(authentication);
-
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-
-        Set<String> roles = userDetails.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toSet());
-
-        // Return the JWT based on the new user
-        return ResponseEntity.ok(new JwtResponse(jwt,
-                userDetails.getAccountName(),
-                roles));
+        // Return a success message instead of JWT
+        return ResponseEntity.ok("User registered successfully");
     }
 }

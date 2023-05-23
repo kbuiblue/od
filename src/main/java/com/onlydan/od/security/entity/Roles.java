@@ -1,8 +1,8 @@
 package com.onlydan.od.security.entity;
 
 public enum Roles {
-    ADMIN(1),
-    USER(2);
+    ROLE_ADMIN(1),
+    ROLE_USER(2);
 
     private final int value;
 
@@ -12,5 +12,8 @@ public enum Roles {
 
     public int getValue() {
         return value;
+    }
+    public String getName() {
+        return name();
     }
 }

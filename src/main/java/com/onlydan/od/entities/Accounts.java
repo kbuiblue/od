@@ -6,10 +6,10 @@ import com.onlydan.od.security.entity.RoleAssignment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -25,9 +25,9 @@ public class Accounts {
     @Column
     private Boolean isActive;
 
-    @CreatedDate
+    @UpdateTimestamp
     @Column
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
 
     @Column
     private String accountName;
@@ -56,4 +56,9 @@ public class Accounts {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+    public Accounts (String accountName, String accountPassword) {
+        this.accountName = accountName;
+        this.accountPassword = accountPassword;
+        this.isActive = true;
+    }
 }

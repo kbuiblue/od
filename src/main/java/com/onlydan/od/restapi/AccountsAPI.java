@@ -2,9 +2,7 @@ package com.onlydan.od.restapi;
 
 import com.onlydan.od.dto.AccountsDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -15,4 +13,7 @@ public interface AccountsAPI {
 
     @GetMapping("/email")
     ResponseEntity<AccountsDTO> getAccountByEmail(@RequestParam("email") @Valid String email);
+
+    @PostMapping
+    ResponseEntity<AccountsDTO> createAccount(@Valid @RequestBody AccountsDTO accountsDTO);
 }

@@ -1,14 +1,19 @@
 package com.onlydan.od.dto;
 
+import com.onlydan.od.enums.Gender;
 import com.onlydan.od.security.entity.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountsDTO {
+
+    private Long accountId;
 
     private String accountName;
      
@@ -22,9 +27,13 @@ public class AccountsDTO {
 
     private String phoneNumber;
 
+    private LocalDateTime creationDate;
+
     private String address;
 
     private String email;
 
-    private String gender;
+    private Gender gender;
+
+    private Boolean isActive;
 }

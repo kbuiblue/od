@@ -38,6 +38,7 @@ public class AuthControllerImpl implements AuthController {
     private final AccountsRepository accountsRepository;
 
     private final RoleAssignmentRepository roleAssignmentRepository;
+
     public ResponseEntity<?> authenticateAccount(JwtRequest loginRequest) {
 
         Authentication authentication =
@@ -66,6 +67,7 @@ public class AuthControllerImpl implements AuthController {
             return ResponseEntity.badRequest().body(AllExceptions.NameAlreadyExists());
 
         PasswordEncoder encoder = webSecurityConfig.passwordEncoder();
+
         // Hash the password and create a new user
         signupRequest.setPassword(encoder.encode(signupRequest.getPassword()));
         Accounts newAccount = new Accounts(signupRequest.getAccountName(), signupRequest.getPassword());
@@ -74,7 +76,9 @@ public class AuthControllerImpl implements AuthController {
         RoleAssignment newRole = new RoleAssignment(Roles.ROLE_USER, newAccount);
         roleAssignmentRepository.save(newRole);
 
+        UserDetailsImpl newUser = UserDetailsImpl.build(newAccount);
+
         // Return a success message instead of JWT
-        return ResponseEntity.ok("User registered successfully");
+        return ResponseEntity.ok(newUser);
     }
 }

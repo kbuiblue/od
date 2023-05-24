@@ -30,6 +30,15 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public static UserDetailsImpl build(Accounts userAccount) {
+        if (userAccount == null) {
+            throw new IllegalArgumentException("userAccount cannot be null");
+        }
+
+        Set<RoleAssignment> roleAssignments = userAccount.getRoles();
+        if (roleAssignments == null) {
+            throw new IllegalArgumentException("roleAssignments cannot be null");
+        }
+
         Set<Roles> roles = userAccount.getRoles()
                 .stream()
                 .map(RoleAssignment::getRole)

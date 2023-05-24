@@ -39,7 +39,7 @@ public class ProductInfoService {
 
         ProductInfo savedProductInfo = productInfoRepository.save(productInfo);
 
-        return productInfoMapper.toDTO(savedProductInfo);
+        return productInfoMapper.INSTANCE.toDTO(savedProductInfo);
     }
     //PUT REQUESTS
     public ProductInfoDTO updateProductInfo(Long productId, ProductInfoDTO productUpdateDTO) {
@@ -60,7 +60,7 @@ public class ProductInfoService {
 
         ProductInfo savedProductInfo = productInfoRepository.save(productInfo);
 
-        return productInfoMapper.toDTO(savedProductInfo);
+        return productInfoMapper.INSTANCE.toDTO(savedProductInfo);
     }
 
 

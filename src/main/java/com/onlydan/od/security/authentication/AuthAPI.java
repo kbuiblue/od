@@ -1,4 +1,4 @@
-package com.onlydan.od.authentication;
+package com.onlydan.od.security.authentication;
 
 import com.onlydan.od.security.jwt.JwtRequest;
 import org.springframework.http.MediaType;
@@ -12,7 +12,7 @@ import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/auth")
-public interface AuthController {
+public interface AuthAPI {
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<?> authenticateAccount(@Valid @RequestBody JwtRequest loginRequest);
     @PostMapping("/signup")

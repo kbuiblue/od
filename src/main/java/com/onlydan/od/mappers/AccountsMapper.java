@@ -3,8 +3,6 @@ package com.onlydan.od.mappers;
 import com.onlydan.od.dto.AccountsDTO;
 import com.onlydan.od.entities.Accounts;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 

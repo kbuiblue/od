@@ -1,6 +1,8 @@
 package com.onlydan.od.security.entity;
 
 import com.onlydan.od.entities.Accounts;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,7 +13,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class RoleAssignment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +26,7 @@ public class RoleAssignment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
-    private Accounts accounts;
+    private Accounts account;
 
     @CreatedDate
     @Column

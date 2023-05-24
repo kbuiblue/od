@@ -1,17 +1,15 @@
 package com.onlydan.od.authentication.impl;
 
 import com.onlydan.od.authentication.AuthController;
-import com.onlydan.od.entities.Accounts;
+import com.onlydan.od.dto.AccountsDTO;
 import com.onlydan.od.exceptions.AllExceptions;
-import com.onlydan.od.repositories.AccountsRepository;
 import com.onlydan.od.repositories.RoleAssignmentRepository;
-import com.onlydan.od.security.config.WebSecurityConfig;
-import com.onlydan.od.security.entity.RoleAssignment;
-import com.onlydan.od.security.entity.Roles;
+import com.onlydan.od.security.service.dto.RoleAssignmentDTO;
 import com.onlydan.od.security.service.impl.UserDetailsImpl;
 import com.onlydan.od.security.jwt.JwtRequest;
 import com.onlydan.od.security.jwt.JwtResponse;
 import com.onlydan.od.security.jwt.JwtUtils;
+import com.onlydan.od.services.AccountsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,10 +17,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -33,9 +30,7 @@ public class AuthControllerImpl implements AuthController {
 
     private final JwtUtils jwtUtils;
 
-    private final WebSecurityConfig webSecurityConfig;
-
-    private final AccountsRepository accountsRepository;
+    private final AccountsService accountsService;
 
     private final RoleAssignmentRepository roleAssignmentRepository;
 
@@ -48,13 +43,13 @@ public class AuthControllerImpl implements AuthController {
                                 loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateToken(authentication);
+        String jwt = jwtUtils.generateJwtToken(authentication);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-        Set<String> roles = userDetails.getAuthorities().stream()
+        List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
 
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getAccountName(),
@@ -63,22 +58,22 @@ public class AuthControllerImpl implements AuthController {
 
     public ResponseEntity<?> signupAccount(JwtRequest signupRequest) {
         // Check if the user already exists
-        if (accountsRepository.getAccountByAccountName(signupRequest.getAccountName()).isPresent())
+        if (accountsService.getAccountByAccountName(signupRequest.getAccountName()) != null)
             return ResponseEntity.badRequest().body(AllExceptions.NameAlreadyExists());
 
-        PasswordEncoder encoder = webSecurityConfig.passwordEncoder();
-
         // Hash the password and create a new user
-        signupRequest.setPassword(encoder.encode(signupRequest.getPassword()));
-        Accounts newAccount = new Accounts(signupRequest.getAccountName(), signupRequest.getPassword());
-        accountsRepository.save(newAccount);
+        AccountsDTO newAccount = new AccountsDTO();
+        newAccount.setPasswordWithHash(signupRequest.getPassword());
+        newAccount.setAccountName(signupRequest.getAccountName());
+        accountsService.createAccount(newAccount);
 
-        RoleAssignment newRole = new RoleAssignment(Roles.ROLE_USER, newAccount);
-        roleAssignmentRepository.save(newRole);
+        //TO DO: create RoleAssignment service
+        RoleAssignmentDTO defaultRole = new RoleAssignmentDTO();
+        roleAssignmentService.setRole()
 
-        UserDetailsImpl newUser = UserDetailsImpl.build(newAccount);
+        UserDetailsImpl newUserDetails = UserDetailsImpl.build(newAccount);
 
         // Return a success message instead of JWT
-        return ResponseEntity.ok(newUser);
+        return ResponseEntity.ok(newUserDetails);
     }
 }

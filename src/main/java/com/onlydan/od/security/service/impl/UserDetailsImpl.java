@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -34,15 +33,15 @@ public class UserDetailsImpl implements UserDetails {
             throw new IllegalArgumentException("userAccount cannot be null");
         }
 
-        Set<RoleAssignment> roleAssignments = userAccount.getRoles();
+        List<RoleAssignment> roleAssignments = userAccount.getRoles();
         if (roleAssignments == null) {
             throw new IllegalArgumentException("roleAssignments cannot be null");
         }
 
-        Set<Roles> roles = userAccount.getRoles()
+        List<Roles> roles = userAccount.getRoles()
                 .stream()
                 .map(RoleAssignment::getRole)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
 
         List<GrantedAuthority> authorities = roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.name()))
@@ -63,22 +62,22 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     @Override

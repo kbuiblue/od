@@ -12,7 +12,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Slf4j
@@ -41,7 +42,7 @@ public class Accounts {
     private String accountPassword;
 
     @OneToMany(mappedBy = "accounts", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<RoleAssignment> roles;
+    private List<RoleAssignment> roles = new ArrayList<>();
 
     @Column
     private String firstName;
@@ -60,9 +61,4 @@ public class Accounts {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    public Accounts (String accountName, String accountPassword) {
-        this.accountName = accountName;
-        this.accountPassword = accountPassword;
-        this.isActive = true;
-    }
 }

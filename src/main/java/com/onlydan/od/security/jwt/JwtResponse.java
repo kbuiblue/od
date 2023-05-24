@@ -1,16 +1,16 @@
 package com.onlydan.od.security.jwt;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 public class JwtResponse implements Serializable {
 
     private String token;
     private String type = "Bearer";
     private String accountName;
-    private Set<String> roles;
+    private List<String> roles;
 
-    public JwtResponse(String accessToken, String accountName, Set<String> roles) {
+    public JwtResponse(String accessToken, String accountName, List<String> roles) {
         this.token = accessToken;
         this.accountName = accountName;
         this.roles = roles;

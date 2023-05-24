@@ -1,26 +1,19 @@
-package com.onlydan.od.dto;
+package com.onlydan.od.security.service.dto;
 
 import com.onlydan.od.enums.Gender;
-import com.onlydan.od.security.entity.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountsDTO {
-
-    private Long accountId;
-
+public class AccountsSignUpDTO {
     private String accountName;
-     
-    private String accountPassword;
 
-    private Roles role;
+    private String accountPassword;
 
     private String firstName;
 
@@ -35,8 +28,6 @@ public class AccountsDTO {
     private String email;
 
     private Gender gender;
-
-    private Boolean isActive;
 
     public void setPasswordWithHash(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

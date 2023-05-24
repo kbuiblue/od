@@ -31,9 +31,4 @@ public class RoleAssignment {
     @UpdateTimestamp
     @Column
     private LocalDateTime updatedDate;
-
-    public RoleAssignment(Roles role, Accounts accounts) {
-        this.role = role;
-        this.accounts = accounts;
-    }
 }

@@ -9,31 +9,30 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Component
 public class JwtUtils implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
     private static final long JWT_LIFETIME = 12 * 60 * 60;
 
-    @Value("${jwt.secret:default}")
+    @Value("${jwt.secret}")
     private String jwtSecret;
 
-    public String generateToken(Authentication authentication) {
+    public String generateJwtToken(Authentication authentication) {
 
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
-        return Jwts.builder()
-                .setSubject(authentication.getName())
-                .setExpiration(new java.util.Date(System.currentTimeMillis() + JWT_LIFETIME))
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
-                .compact();
+        return Jwts.builder().setSubject((userPrincipal.getUsername())).setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + JWT_LIFETIME * 1000))
+                .signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
     }
 
-    public String getUsernameFromToken(String token) {
+    public String getUserNameFromJwtToken(String token) {
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
     }
 
-    public boolean validateToken(String authToken) {
+    public boolean validateJwtToken(String authToken) {
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
@@ -51,5 +50,4 @@ public class JwtUtils implements Serializable {
 
         return false;
     }
-
 }

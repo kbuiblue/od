@@ -29,8 +29,4 @@ public class AccountsSignUpDTO {
 
     private Gender gender;
 
-    public void setPasswordWithHash(String password) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.accountPassword = passwordEncoder.encode(password);
-    }
 }

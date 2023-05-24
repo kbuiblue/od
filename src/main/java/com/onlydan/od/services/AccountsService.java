@@ -41,14 +41,14 @@ public class AccountsService {
     //GET REQUESTS
     public AccountsDTO getAccountByAccountName(String accountName) {
         Accounts accounts = accountsRepository
-                .getAccountByAccountName(accountName).orElseThrow(AllExceptions::AccountNameNotFound);
+                .getAccountByAccountName(accountName).orElseThrow(AllExceptions::AccountNotFound);
 
         return accountsMapper.INSTANCE.toDTO(accounts);
     }
 
     public AccountsDTO getAccountByEmail(String email) {
         Accounts accounts = accountsRepository
-                .getAccountByEmail(email).orElseThrow(AllExceptions::AccountNameNotFound);
+                .getAccountByEmail(email).orElseThrow(AllExceptions::AccountNotFound);
 
         return accountsMapper.INSTANCE.toDTO(accounts);
     }

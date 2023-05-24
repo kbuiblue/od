@@ -9,6 +9,5 @@ import java.util.Optional;
 @Repository
 public interface AccountsRepository extends JpaRepository<Accounts, Long> {
     Optional<Accounts> getAccountByAccountName(String accountName);
-
     Optional<Accounts> getAccountByEmail(String email);
 }

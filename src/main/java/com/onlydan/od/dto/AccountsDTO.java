@@ -37,9 +37,4 @@ public class AccountsDTO {
     private Gender gender;
 
     private Boolean isActive;
-
-    public void setPasswordWithHash(String password) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.accountPassword = passwordEncoder.encode(password);
-    }
 }

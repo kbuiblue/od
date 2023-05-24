@@ -62,7 +62,7 @@ public class AuthControllerImpl implements AuthController {
 
     public ResponseEntity<?> signupAccount(JwtRequest signupRequest) {
         // Check if the user already exists
-        if (accountsRepository.findByAccountName(signupRequest.getAccountName()).isPresent())
+        if (accountsRepository.getAccountByAccountName(signupRequest.getAccountName()).isPresent())
             return ResponseEntity.badRequest().body(AllExceptions.NameAlreadyExists());
 
         PasswordEncoder encoder = webSecurityConfig.passwordEncoder();

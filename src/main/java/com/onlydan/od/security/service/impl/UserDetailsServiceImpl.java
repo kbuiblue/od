@@ -19,7 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String accountName) throws UsernameNotFoundException {
-        Accounts account = accountsRepository.findByAccountName(accountName)
+        Accounts account = accountsRepository.getAccountByAccountName(accountName)
                 .orElseThrow(() -> new UsernameNotFoundException("User with name: " + accountName + " not found"));
 
         return UserDetailsImpl.build(account);
@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Transactional
     public UserDetails validateUser(String accountName) {
-        Accounts account = accountsRepository.findByAccountName(accountName)
+        Accounts account = accountsRepository.getAccountByAccountName(accountName)
                 .orElseThrow(() -> new UsernameNotFoundException("User with name: " + accountName + " not found"));
 
         return UserDetailsImpl.build(account);

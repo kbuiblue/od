@@ -25,7 +25,7 @@ public class OrderDetails {
     private ProductInfo productId;
 
     @Column(precision = 10, scale = 2)
-    private Integer productPrice;
+    private Double productPrice;
 
     @Column
     private Boolean isOnSale;

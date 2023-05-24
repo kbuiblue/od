@@ -22,7 +22,7 @@ public class Accounts {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
 
-    @Column
+    @Column(columnDefinition = "boolean default true")
     private Boolean isActive;
 
     @UpdateTimestamp

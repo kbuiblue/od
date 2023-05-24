@@ -31,4 +31,8 @@ public class AllExceptions {
     public static ResponseException NameAlreadyExists() {
         return badRequest("NAME ALREADY EXISTS", "Sorry, this account name already exists.");
     }
+
+    public static ResponseException AccountNameNotFound() {
+        return notFound("ACCOUNT NAME NOT FOUND", "Sorry, this account name does not exist.");
+    }
 }

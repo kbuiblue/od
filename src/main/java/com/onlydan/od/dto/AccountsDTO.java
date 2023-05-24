@@ -1,5 +1,6 @@
 package com.onlydan.od.dto;
 
+import com.onlydan.od.security.entity.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ public class AccountsDTO {
      
     private String accountPassword;
 
-    private RolesDTO roleId;
+    private Roles role;
 
     private String firstName;
 

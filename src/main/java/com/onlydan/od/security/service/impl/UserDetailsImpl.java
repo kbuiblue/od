@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -29,10 +30,10 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public static UserDetailsImpl build(Accounts userAccount) {
-        List<Roles> roles = userAccount.getRoles()
+        Set<Roles> roles = userAccount.getRoles()
                 .stream()
                 .map(RoleAssignment::getRole)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
 
         List<GrantedAuthority> authorities = roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.name()))

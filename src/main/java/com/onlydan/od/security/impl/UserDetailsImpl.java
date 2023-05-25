@@ -2,8 +2,8 @@ package com.onlydan.od.security.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.onlydan.od.entities.Accounts;
-import com.onlydan.od.security.entity.RoleAssignment;
-import com.onlydan.od.security.entity.Roles;
+import com.onlydan.od.security.entities.RoleAssignment;
+import com.onlydan.od.security.entities.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,10 +29,6 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public static UserDetailsImpl build(Accounts userAccount) {
-        if (userAccount == null) {
-            throw new IllegalArgumentException("userAccount cannot be null");
-        }
-
         List<Roles> roles = userAccount.getRoles()
                 .stream()
                 .map(RoleAssignment::getRole)

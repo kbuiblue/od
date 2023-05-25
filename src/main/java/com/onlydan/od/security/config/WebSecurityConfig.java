@@ -1,6 +1,6 @@
 package com.onlydan.od.security.config;
 
-import com.onlydan.od.security.service.impl.UserDetailsServiceImpl;
+import com.onlydan.od.security.impl.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -63,8 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
-                .antMatchers("/test/**").permitAll()
+                    .antMatchers("/auth/**").permitAll()
+                    .antMatchers("/test/**").permitAll()
                 .anyRequest()
                 .authenticated();
 

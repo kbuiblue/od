@@ -1,6 +1,6 @@
 package com.onlydan.od.security.jwt;
 
-import com.onlydan.od.security.service.impl.UserDetailsImpl;
+import com.onlydan.od.security.impl.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

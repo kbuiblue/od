@@ -1,7 +1,7 @@
 package com.onlydan.od.security.config;
 
 import com.onlydan.od.security.jwt.JwtUtils;
-import com.onlydan.od.security.service.impl.UserDetailsServiceImpl;
+import com.onlydan.od.security.impl.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,23 +30,31 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        try {
-            String jwt = parseJwt(request);
-            if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
-                String username = jwtUtils.getUserNameFromJwtToken(jwt);
-                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken
-                        (userDetails, null, userDetails.getAuthorities());
+        if (request.getServletPath().equals("/auth/**")) {
+            filterChain.doFilter(request, response);
+        } else {
 
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+            try {
+                String jwt = parseJwt(request);
+                if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
+                    String username = jwtUtils.getUserNameFromJwtToken(jwt);
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken
+                            (userDetails, null, userDetails.getAuthorities());
+
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
+            } catch (Exception e) {
+                logger.error("Cannot set user authentication", e);
             }
-        } catch (Exception e) {
-            logger.error("Cannot set user authentication", e);
+
+            filterChain.doFilter(request, response);
+
         }
 
-        filterChain.doFilter(request, response);
     }
 
     private String parseJwt(HttpServletRequest request) {

@@ -1,9 +1,9 @@
 package com.onlydan.od.security.impl;
 
 import com.onlydan.od.security.repositories.AccountsRepository;
-import com.onlydan.od.security.service.UserService;
+import com.onlydan.od.security.services.UserService;
 import com.onlydan.od.security.dto.AccSecurityDTO;
-import com.onlydan.od.security.mapper.AccSecurityMapper;
+import com.onlydan.od.security.mappers.AccSecurityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

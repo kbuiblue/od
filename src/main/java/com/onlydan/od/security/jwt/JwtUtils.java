@@ -28,7 +28,7 @@ public class JwtUtils implements Serializable {
                 .signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
     }
 
-    public String getUserNameFromJwtToken(String token) {
+    public String getAccountNameFromJwtToken(String token) {
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
     }
 

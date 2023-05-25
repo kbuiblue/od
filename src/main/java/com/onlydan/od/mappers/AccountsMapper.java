@@ -15,8 +15,4 @@ public interface AccountsMapper {
     AccountsDTO toDTO(Accounts accounts);
 
     List<AccountsDTO> toDTOs(List<Accounts> accountsList);
-
-    Accounts toEntity(AccountsDTO accountsDTO);
-
-    List<Accounts> toEntities(List<AccountsDTO> accountsDTOList);
 }

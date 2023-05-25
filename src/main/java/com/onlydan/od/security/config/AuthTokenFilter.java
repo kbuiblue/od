@@ -31,15 +31,15 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        if (request.getServletPath().equals("/auth/**")) {
+        if (request.getServletPath().equals("/auth/signup")) {
             filterChain.doFilter(request, response);
         } else {
 
             try {
                 String jwt = parseJwt(request);
                 if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
-                    String username = jwtUtils.getUserNameFromJwtToken(jwt);
-                    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                    String accountName = jwtUtils.getAccountNameFromJwtToken(jwt);
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(accountName);
 
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken
                             (userDetails, null, userDetails.getAuthorities());

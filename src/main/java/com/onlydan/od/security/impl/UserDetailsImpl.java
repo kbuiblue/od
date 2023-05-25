@@ -6,17 +6,18 @@ import com.onlydan.od.security.entities.RoleAssignment;
 import com.onlydan.od.security.entities.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Data
+@EqualsAndHashCode
 public class UserDetailsImpl implements UserDetails {
 
     private Long id;
@@ -71,13 +72,4 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        UserDetailsImpl user = (UserDetailsImpl) o;
-        return Objects.equals(id, user.id);
-    }
 }

@@ -2,7 +2,7 @@ package com.onlydan.od.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.onlydan.od.enums.Gender;
-import com.onlydan.od.security.entity.RoleAssignment;
+import com.onlydan.od.security.entities.RoleAssignment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +12,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -41,8 +40,8 @@ public class Accounts {
     @JsonIgnore
     private String accountPassword;
 
-    @OneToMany(mappedBy = "accounts", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<RoleAssignment> roles = new ArrayList<>();
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RoleAssignment> roles;
 
     @Column
     private String firstName;

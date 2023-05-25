@@ -1,7 +1,7 @@
 package com.onlydan.od.restapi;
 
 import com.onlydan.od.dto.AccountsDTO;
-import com.onlydan.od.services.AccountsService;
+import com.onlydan.od.security.services.AccountsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

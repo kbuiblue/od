@@ -57,7 +57,7 @@ public class AccountsService {
     public Boolean checkIfAccountExists(String accountName) {
         Optional<Accounts> accounts = accountsRepository
                 .getAccountByAccountName(accountName);
-        return true;
+        return accounts.isPresent();
     }
 
 }

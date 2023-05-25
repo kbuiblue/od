@@ -1,7 +1,7 @@
-package com.onlydan.od.security.service.mapper;
+package com.onlydan.od.security.mappers;
 
 import com.onlydan.od.entities.Accounts;
-import com.onlydan.od.security.service.dto.AccSecurityDTO;
+import com.onlydan.od.security.dto.AccSecurityDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;

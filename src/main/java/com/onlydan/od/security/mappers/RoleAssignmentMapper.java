@@ -1,8 +1,8 @@
-package com.onlydan.od.security.service.mapper;
+package com.onlydan.od.security.mappers;
 
 import com.onlydan.od.entities.Accounts;
-import com.onlydan.od.security.entity.RoleAssignment;
-import com.onlydan.od.security.service.dto.RoleAssignmentDTO;
+import com.onlydan.od.security.entities.RoleAssignment;
+import com.onlydan.od.security.dto.RoleAssignmentDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -15,7 +15,7 @@ import java.util.List;
 public interface RoleAssignmentMapper {
     RoleAssignmentMapper INSTANCE = Mappers.getMapper(RoleAssignmentMapper.class);
 
-    @Mapping(target = "accountId", source = "accounts", qualifiedByName = "mapAccountId")
+    @Mapping(target = "assignmentId", source = "account", qualifiedByName = "mapAccountId")
     RoleAssignmentDTO toDTO(RoleAssignment roleAssignment);
 
     @Named("mapAccountId")

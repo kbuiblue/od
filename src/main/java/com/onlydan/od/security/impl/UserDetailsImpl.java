@@ -1,4 +1,4 @@
-package com.onlydan.od.security.service.impl;
+package com.onlydan.od.security.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.onlydan.od.entities.Accounts;
@@ -31,11 +31,6 @@ public class UserDetailsImpl implements UserDetails {
     public static UserDetailsImpl build(Accounts userAccount) {
         if (userAccount == null) {
             throw new IllegalArgumentException("userAccount cannot be null");
-        }
-
-        List<RoleAssignment> roleAssignments = userAccount.getRoles();
-        if (roleAssignments == null) {
-            throw new IllegalArgumentException("roleAssignments cannot be null");
         }
 
         List<Roles> roles = userAccount.getRoles()

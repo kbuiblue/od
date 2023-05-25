@@ -1,4 +1,4 @@
-package com.onlydan.od.security.entity;
+package com.onlydan.od.security.entities;
 
 import com.onlydan.od.entities.Accounts;
 import lombok.AllArgsConstructor;

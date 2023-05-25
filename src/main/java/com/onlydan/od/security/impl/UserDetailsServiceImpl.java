@@ -1,7 +1,7 @@
-package com.onlydan.od.security.service.impl;
+package com.onlydan.od.security.impl;
 
 import com.onlydan.od.entities.Accounts;
-import com.onlydan.od.repositories.AccountsRepository;
+import com.onlydan.od.security.repositories.AccountsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,14 +1,15 @@
-package com.onlydan.od.services;
+package com.onlydan.od.security.services;
 
 import com.onlydan.od.dto.AccountsDTO;
 import com.onlydan.od.entities.Accounts;
 import com.onlydan.od.exceptions.AllExceptions;
 import com.onlydan.od.mappers.AccountsMapper;
-import com.onlydan.od.repositories.AccountsRepository;
+import com.onlydan.od.security.repositories.AccountsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -51,6 +52,12 @@ public class AccountsService {
                 .getAccountByEmail(email).orElseThrow(AllExceptions::AccountNotFound);
 
         return accountsMapper.INSTANCE.toDTO(accounts);
+    }
+
+    public Boolean checkIfAccountExists(String accountName) {
+        Optional<Accounts> accounts = accountsRepository
+                .getAccountByAccountName(accountName);
+        return true;
     }
 
 }

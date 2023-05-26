@@ -17,8 +17,13 @@ public class ProductInfoUserResource implements ProductInfoUserAPI {
 
     //GET
     @Override
+    public ResponseEntity<ProductInfoDTO> getProductInfoByProductName(String productName) {
+        log.info("Get product info by product name: {} ", productName);
+        return ResponseEntity.ok(productInfoService.getProductInfoByProductName(productName));    }
+
+    @Override
     public ResponseEntity<List<ProductInfoDTO>> getProductInfoByProductBrand(String productBrand) {
-        log.info("Get product info by product brand {} ", productBrand);
+        log.info("Get product info by product brand: {} ", productBrand);
         return ResponseEntity.ok(productInfoService.getAllProductInfoByProductBrand(productBrand));
     }
 

@@ -9,6 +9,9 @@ import java.util.List;
 @RequestMapping(value = "/api/user/product-info")
 public interface ProductInfoUserAPI {
     //GET REQUESTS
+    @GetMapping
+    ResponseEntity<ProductInfoDTO> getProductInfoByProductName(@RequestParam("product-name") String productName);
+
     @GetMapping("/brands")
     ResponseEntity<List<ProductInfoDTO>> getProductInfoByProductBrand(@RequestParam("brand") String productBrand);
 

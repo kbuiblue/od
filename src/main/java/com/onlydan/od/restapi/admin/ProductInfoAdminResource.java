@@ -19,7 +19,7 @@ public class ProductInfoAdminResource implements ProductInfoAdminAPI {
     // POST
     @Override
     public ResponseEntity<ProductInfoDTO> createProductInfo(ProductInfoDTO productInfoDTO) {
-        log.info("Product id #{} added", productInfoDTO.getProductId());
+        log.info("Product: " + productInfoDTO.getProductName() + " added");
         ProductInfoDTO productInfoDto = productInfoService.createProductInfo(productInfoDTO);
         return ResponseEntity.created(URI.create("/api/product-info" + productInfoDto.getProductId())).body(productInfoDto);
     }
@@ -30,6 +30,8 @@ public class ProductInfoAdminResource implements ProductInfoAdminAPI {
         ProductInfoDTO productInfoDto = productInfoService.updateProductInfoById(productId, productInfoDTO);
         return ResponseEntity.ok(productInfoDto);
     }
+
+    //ALL GET REQUESTS ARE SHARED WITH USER
 
     //DELETE
     @Override

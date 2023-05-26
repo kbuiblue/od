@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface ProductInfoRepository extends JpaRepository<ProductInfo, Long> {
+    Optional<ProductInfo> getProductInfoByProductName(String productName);
     Optional<List<ProductInfo>> getAllProductInfoByProductBrand(String productBrand);
     Optional<List<ProductInfo>> getAllProductInfoByProductCondition(String productCondition);
     Optional<List<ProductInfo>> getAllProductInfoByProductType(String productType);

@@ -26,6 +26,10 @@ public class ProductInfoService {
         Countries countries = countriesRepository.findById(productCreationDTO.getCountryId())
                 .orElseThrow(AllExceptions::CountryNotFound);
 
+        if (productInfoRepository.getProductInfoByProductName(productCreationDTO.getProductName()).isPresent()) {
+            throw AllExceptions.ProductInfoAlreadyExists();
+        }
+
         ProductInfo productInfo = ProductInfo.builder()
                 .stockPrice(productCreationDTO.getStockPrice())
                 .productBrand(productCreationDTO.getProductBrand())
@@ -41,6 +45,7 @@ public class ProductInfoService {
 
         return productInfoMapper.INSTANCE.toDTO(savedProductInfo);
     }
+
     //PUT REQUESTS
     public ProductInfoDTO updateProductInfoById(Long productId, ProductInfoDTO productUpdateDTO) {
         ProductInfo productInfo = productInfoRepository.findById(productId)
@@ -64,11 +69,18 @@ public class ProductInfoService {
     }
 
     //GET REQUESTS
+    public ProductInfoDTO getProductInfoByProductName(String productName) {
+        ProductInfo productInfo = productInfoRepository.getProductInfoByProductName(productName)
+                .orElseThrow(AllExceptions::ProductInfoNotFound);
+
+        return productInfoMapper.INSTANCE.toDTO(productInfo);
+    }
+
     public List<ProductInfoDTO> getAllProductInfoByProductBrand(String productBrand) {
         List<ProductInfo> productInfoList = productInfoRepository.getAllProductInfoByProductBrand(productBrand)
                 .orElseThrow(AllExceptions::ProductInfoNotFound);
 
-        if(productInfoList.isEmpty())
+        if (productInfoList.isEmpty())
             throw AllExceptions.ProductInfoNotFound();
 
         return productInfoMapper.INSTANCE.toDTOs(productInfoList);
@@ -78,7 +90,7 @@ public class ProductInfoService {
         List<ProductInfo> productInfoList = productInfoRepository.getAllProductInfoByProductCondition(productCondition)
                 .orElseThrow(AllExceptions::InvalidInput);
 
-        if(productInfoList.isEmpty())
+        if (productInfoList.isEmpty())
             throw AllExceptions.InvalidInput();
 
         return productInfoMapper.INSTANCE.toDTOs(productInfoList);
@@ -88,7 +100,7 @@ public class ProductInfoService {
         List<ProductInfo> productInfoList = productInfoRepository.getAllProductInfoByProductType(productType)
                 .orElseThrow(AllExceptions::InvalidInput);
 
-        if(productInfoList.isEmpty())
+        if (productInfoList.isEmpty())
             throw AllExceptions.InvalidInput();
 
         return productInfoMapper.INSTANCE.toDTOs(productInfoList);
@@ -105,8 +117,10 @@ public class ProductInfoService {
     }
 
     public ProductInfoDTO getProductInfoById(Long id) {
-        return productInfoMapper.toDTO(productInfoRepository.findById(id)
-                .orElseThrow(AllExceptions::ProductInfoNotFound));
+        ProductInfo productInfo = productInfoRepository.findById(id)
+                .orElseThrow(AllExceptions::ProductInfoNotFound);
+
+        return productInfoMapper.INSTANCE.toDTO(productInfo);
     }
 
     //DELETE REQUESTS

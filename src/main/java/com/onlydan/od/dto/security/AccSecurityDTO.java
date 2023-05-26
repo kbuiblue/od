@@ -1,4 +1,4 @@
-package com.onlydan.od.security.dto;
+package com.onlydan.od.dto.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.onlydan.od.restapi;
+package com.onlydan.od.restapi.user;
 
 import com.onlydan.od.dto.ProductInfoDTO;
 import org.springframework.http.ResponseEntity;
@@ -6,21 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping(value = "/api/product-info")
-public interface ProductInfoAPI {
-
-    //POST REQUESTS
-    @PostMapping
-    ResponseEntity<ProductInfoDTO> createProductInfo(@RequestBody ProductInfoDTO productInfoDTO);
-
-    //PUT REQUESTS
-    @PutMapping("/{product-id}")
-    ResponseEntity<ProductInfoDTO> updateProductInfo(@PathVariable("product-id") Long productId, @RequestBody ProductInfoDTO productInfoDTO);
-
-    //DELETE REQUESTS
-    @DeleteMapping("/{product-id}")
-    ResponseEntity<Void> deleteProductInfoById(@PathVariable("product-id") Long productId);
-
+@RequestMapping(value = "/api/user/product-info")
+public interface ProductInfoUserAPI {
     //GET REQUESTS
     @GetMapping("/brands")
     ResponseEntity<List<ProductInfoDTO>> getProductInfoByProductBrand(@RequestParam("brand") String productBrand);

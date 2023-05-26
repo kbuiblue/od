@@ -1,10 +1,10 @@
-package com.onlydan.od.security.services;
+package com.onlydan.od.services.security;
 
 import com.onlydan.od.entities.Accounts;
 import com.onlydan.od.exceptions.AllExceptions;
 import com.onlydan.od.security.config.WebSecurityConfig;
 import com.onlydan.od.security.jwt.JwtRequest;
-import com.onlydan.od.security.repositories.AccountsRepository;
+import com.onlydan.od.repositories.security.AccountsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.onlydan.od.security.repositories;
+package com.onlydan.od.repositories.security;
 
 import com.onlydan.od.entities.Accounts;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -63,8 +63,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
+                    .antMatchers("/api/admin/**").hasRole("ADMIN")
+                    .antMatchers("/api/user/**").hasAnyRole("ADMIN", "USER")
                     .antMatchers("/auth/**").permitAll()
-                    .antMatchers("/test/**").permitAll()
+                    .antMatchers("/test/**").permitAll() // remember to remove after finish with building the application
                 .anyRequest()
                 .authenticated();
 

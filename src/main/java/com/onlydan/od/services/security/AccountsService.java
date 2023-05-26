@@ -1,10 +1,10 @@
-package com.onlydan.od.security.services;
+package com.onlydan.od.services.security;
 
 import com.onlydan.od.dto.AccountsDTO;
 import com.onlydan.od.entities.Accounts;
 import com.onlydan.od.exceptions.AllExceptions;
 import com.onlydan.od.mappers.AccountsMapper;
-import com.onlydan.od.security.repositories.AccountsRepository;
+import com.onlydan.od.repositories.security.AccountsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +39,27 @@ public class AccountsService {
         return accountsMapper.INSTANCE.toDTO(savedAccount);
     }
 
+    //PUT REQUESTS
+    public AccountsDTO updateAccountById(Long accountId, AccountsDTO accountsDTO) {
+        Accounts account = accountsRepository.findById(accountId)
+                .orElseThrow(AllExceptions::AccountNotFound);
+
+        account.setAccountName(accountsDTO.getAccountName());
+        account.setAccountPassword(accountsDTO.getAccountPassword());
+        account.setEmail(accountsDTO.getEmail());
+        account.setPhoneNumber(accountsDTO.getPhoneNumber());
+        account.setFirstName(accountsDTO.getFirstName());
+        account.setLastName(accountsDTO.getLastName());
+        account.setAddress(accountsDTO.getAddress());
+        account.setCreationDate(accountsDTO.getCreationDate());
+        account.setGender(accountsDTO.getGender());
+        account.setIsActive(accountsDTO.getIsActive());
+
+        Accounts savedAccount = accountsRepository.save(account);
+
+        return accountsMapper.INSTANCE.toDTO(savedAccount);
+    }
+
     //GET REQUESTS
     public AccountsDTO getAccountByAccountName(String accountName) {
         Accounts accounts = accountsRepository
@@ -52,6 +73,12 @@ public class AccountsService {
                 .getAccountByEmail(email).orElseThrow(AllExceptions::AccountNotFound);
 
         return accountsMapper.INSTANCE.toDTO(accounts);
+    }
+
+    //DELETE REQUEST
+
+    public void deleteAccountById(Long accountId) {
+        accountsRepository.deleteById(accountId);
     }
 
     public Boolean checkIfAccountExists(String accountName) {

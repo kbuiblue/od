@@ -1,6 +1,6 @@
-package com.onlydan.od.security.dto;
+package com.onlydan.od.dto.security;
 
-import com.onlydan.od.security.entities.Roles;
+import com.onlydan.od.enums.security.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

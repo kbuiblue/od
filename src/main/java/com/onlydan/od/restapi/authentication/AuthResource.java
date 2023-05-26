@@ -1,14 +1,14 @@
-package com.onlydan.od.security.authentication;
+package com.onlydan.od.restapi.authentication;
 
 import com.onlydan.od.entities.Accounts;
-import com.onlydan.od.security.entities.Roles;
-import com.onlydan.od.security.dto.RoleAssignmentDTO;
+import com.onlydan.od.enums.security.Roles;
+import com.onlydan.od.dto.security.RoleAssignmentDTO;
 import com.onlydan.od.security.impl.UserDetailsImpl;
 import com.onlydan.od.security.jwt.JwtRequest;
 import com.onlydan.od.security.jwt.JwtResponse;
 import com.onlydan.od.security.jwt.JwtUtils;
-import com.onlydan.od.security.services.AuthService;
-import com.onlydan.od.security.services.RoleAssignmentService;
+import com.onlydan.od.services.security.AuthService;
+import com.onlydan.od.services.security.RoleAssignmentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

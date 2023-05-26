@@ -1,6 +1,6 @@
-package com.onlydan.od.security.repositories;
+package com.onlydan.od.repositories.security;
 
-import com.onlydan.od.security.entities.RoleAssignment;
+import com.onlydan.od.entities.security.RoleAssignment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

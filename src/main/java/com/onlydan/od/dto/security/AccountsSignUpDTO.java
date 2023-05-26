@@ -1,4 +1,4 @@
-package com.onlydan.od.security.dto;
+package com.onlydan.od.dto.security;
 
 import com.onlydan.od.enums.Gender;
 import lombok.AllArgsConstructor;

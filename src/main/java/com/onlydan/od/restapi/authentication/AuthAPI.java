@@ -1,4 +1,4 @@
-package com.onlydan.od.security.authentication;
+package com.onlydan.od.restapi.authentication;
 
 import com.onlydan.od.security.jwt.JwtRequest;
 import org.springframework.http.MediaType;

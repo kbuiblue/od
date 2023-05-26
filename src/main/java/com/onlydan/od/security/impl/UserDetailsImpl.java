@@ -2,8 +2,8 @@ package com.onlydan.od.security.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.onlydan.od.entities.Accounts;
-import com.onlydan.od.security.entities.RoleAssignment;
-import com.onlydan.od.security.entities.Roles;
+import com.onlydan.od.entities.security.RoleAssignment;
+import com.onlydan.od.enums.security.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

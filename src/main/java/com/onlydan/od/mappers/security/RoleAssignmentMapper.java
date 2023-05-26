@@ -1,8 +1,8 @@
-package com.onlydan.od.security.mappers;
+package com.onlydan.od.mappers.security;
 
 import com.onlydan.od.entities.Accounts;
-import com.onlydan.od.security.entities.RoleAssignment;
-import com.onlydan.od.security.dto.RoleAssignmentDTO;
+import com.onlydan.od.entities.security.RoleAssignment;
+import com.onlydan.od.dto.security.RoleAssignmentDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

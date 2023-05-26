@@ -1,7 +1,7 @@
 package com.onlydan.od.dto;
 
 import com.onlydan.od.enums.Gender;
-import com.onlydan.od.security.entities.Roles;
+import com.onlydan.od.enums.security.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

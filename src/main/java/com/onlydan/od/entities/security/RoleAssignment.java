@@ -1,6 +1,7 @@
-package com.onlydan.od.security.entities;
+package com.onlydan.od.entities.security;
 
 import com.onlydan.od.entities.Accounts;
+import com.onlydan.od.enums.security.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

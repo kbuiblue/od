@@ -21,7 +21,11 @@ public class AllExceptions {
     }
 
     public static ResponseException ProductInfoNotFound() {
-        return notFound("PRODUCT NOT FOUND", "Oops! This product does not exist.");
+        return notFound("PRODUCT NOT FOUND", "Sorry, this product does not exist.");
+    }
+
+    public static ResponseException ProductInfoAlreadyExists() {
+        return badRequest("PRODUCT ALREADY EXISTS", "Oops! This product already exists.");
     }
 
     public static ResponseException CountryNotFound() {
@@ -34,5 +38,9 @@ public class AllExceptions {
 
     public static ResponseException AccountNotFound() {
         return notFound("ACCOUNT NOT FOUND", "Sorry, this account does not exist.");
+    }
+
+    public static ResponseException RoleAssignmentNotFound() {
+        return notFound("ROLE ASSIGNMENT NOT FOUND", "Sorry, this role assignment does not exist.");
     }
 }

@@ -31,7 +31,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        if (request.getServletPath().equals("/auth/signup")) {
+        if (request.getServletPath().equals("/auth/**")) {
             filterChain.doFilter(request, response);
         } else {
 

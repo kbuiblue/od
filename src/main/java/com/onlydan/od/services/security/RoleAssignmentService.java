@@ -39,4 +39,35 @@ public class RoleAssignmentService {
 
         return roleAssignmentMapper.INSTANCE.toDTO(savedRoleAssignment);
     }
+
+    //PUT REQUEST
+    public RoleAssignmentDTO updateRoleAssignmentById(Long assignmentId, RoleAssignmentDTO roleAssignmentDTO) {
+        RoleAssignment roleAssignment = roleAssignmentRepository.findById(assignmentId)
+                .orElseThrow(AllExceptions::ProductInfoNotFound);
+
+        Accounts accounts = accountsRepository.findById(roleAssignmentDTO.getAccountsId())
+                .orElseThrow(AllExceptions::AccountNotFound);
+
+        roleAssignment.setRole(roleAssignmentDTO.getRole());
+        roleAssignment.setAccount(accounts);
+        roleAssignment.setAssignedDate(roleAssignmentDTO.getAssignedDate());
+        roleAssignment.setUpdatedDate(roleAssignmentDTO.getUpdatedDate());
+
+        RoleAssignment savedRoleAssignment = roleAssignmentRepository.save(roleAssignment);
+
+        return roleAssignmentMapper.INSTANCE.toDTO(savedRoleAssignment);
+    }
+
+    // GET REQUEST
+    public RoleAssignmentDTO getRoleAssignmentById(Long assignmentId) {
+        RoleAssignment roleAssignment = roleAssignmentRepository.findById(assignmentId)
+                .orElseThrow(AllExceptions::RoleAssignmentNotFound);
+
+        return roleAssignmentMapper.INSTANCE.toDTO(roleAssignment);
+    }
+
+    //DELETE REQUEST
+    public void deleteRoleAssignmentById(Long assignmentId) {
+        roleAssignmentRepository.deleteById(assignmentId);
+    }
 }

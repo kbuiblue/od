@@ -42,7 +42,7 @@ public class ProductInfoService {
         return productInfoMapper.INSTANCE.toDTO(savedProductInfo);
     }
     //PUT REQUESTS
-    public ProductInfoDTO updateProductInfo(Long productId, ProductInfoDTO productUpdateDTO) {
+    public ProductInfoDTO updateProductInfoById(Long productId, ProductInfoDTO productUpdateDTO) {
         ProductInfo productInfo = productInfoRepository.findById(productId)
                 .orElseThrow(AllExceptions::ProductInfoNotFound);
 
@@ -62,13 +62,6 @@ public class ProductInfoService {
 
         return productInfoMapper.INSTANCE.toDTO(savedProductInfo);
     }
-
-
-    //DELETE REQUESTS
-    public void deleteProductInfoById(Long productId) {
-        productInfoRepository.deleteById(productId);
-    }
-
 
     //GET REQUESTS
     public List<ProductInfoDTO> getAllProductInfoByProductBrand(String productBrand) {
@@ -114,5 +107,10 @@ public class ProductInfoService {
     public ProductInfoDTO getProductInfoById(Long id) {
         return productInfoMapper.toDTO(productInfoRepository.findById(id)
                 .orElseThrow(AllExceptions::ProductInfoNotFound));
+    }
+
+    //DELETE REQUESTS
+    public void deleteProductInfoById(Long productId) {
+        productInfoRepository.deleteById(productId);
     }
 }

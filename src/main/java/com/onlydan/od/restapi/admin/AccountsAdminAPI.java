@@ -15,7 +15,7 @@ public interface AccountsAdminAPI {
 
     // PUT REQUESTS
     @PutMapping("/{account-id}")
-    ResponseEntity<AccountsDTO> updateAccountById(@PathVariable("account-id") Long accountId, @Valid @RequestBody AccountsDTO accountsDTO);
+    ResponseEntity<AccountsDTO> updateAccountByAccountId(@PathVariable("account-id") Long accountId, @Valid @RequestBody AccountsDTO accountsDTO);
 
     // GET REQUESTS
     @GetMapping("/name")
@@ -25,6 +25,6 @@ public interface AccountsAdminAPI {
 
     // DELETE REQUESTS
     @DeleteMapping("/{account-id}")
-    ResponseEntity<Void> deleteAccountById(@PathVariable("account-id") Long accountId);
+    ResponseEntity<Void> deleteAccountByAccountId(@PathVariable("account-id") Long accountId);
 
 }

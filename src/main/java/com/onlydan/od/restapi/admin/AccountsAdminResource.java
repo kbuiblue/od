@@ -26,28 +26,30 @@ public class AccountsAdminResource implements AccountsAdminAPI {
 
     // PUT
     @Override
-    public ResponseEntity<AccountsDTO> updateAccountById(Long accountId, AccountsDTO accountsDTO) {
+    public ResponseEntity<AccountsDTO> updateAccountByAccountId(Long accountId, AccountsDTO accountsDTO) {
         log.info("Account id #{} updated", accountId);
-        AccountsDTO accountDto = accountsService.updateAccountById(accountId, accountsDTO);
+        AccountsDTO accountDto = accountsService.updateAccountByAccountId(accountId, accountsDTO);
         return ResponseEntity.ok(accountDto);
     }
 
     // GET
     @Override
     public ResponseEntity<AccountsDTO> getAccountByAccountName(String accountName) {
+        log.info("Account name: {} fetched", accountName);
         return ResponseEntity.ok(accountsService.getAccountByAccountName(accountName));
     }
 
     @Override
     public ResponseEntity<AccountsDTO> getAccountByEmail(String email) {
+        log.info("Account email: {} fetched", email);
         return ResponseEntity.ok(accountsService.getAccountByEmail(email));
     }
 
     // DELETE
     @Override
-    public ResponseEntity<Void> deleteAccountById(Long accountId) {
+    public ResponseEntity<Void> deleteAccountByAccountId(Long accountId) {
         log.info("Account id #{} deleted", accountId);
-        accountsService.deleteAccountById(accountId);
+        accountsService.deleteAccountByAccountId(accountId);
         return ResponseEntity.noContent().build();
     }
 

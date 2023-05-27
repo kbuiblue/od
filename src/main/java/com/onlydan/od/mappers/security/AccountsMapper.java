@@ -1,4 +1,4 @@
-package com.onlydan.od.mappers;
+package com.onlydan.od.mappers.security;
 
 import com.onlydan.od.dto.AccountsDTO;
 import com.onlydan.od.entities.Accounts;

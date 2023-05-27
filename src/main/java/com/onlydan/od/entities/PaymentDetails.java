@@ -21,17 +21,14 @@ public class PaymentDetails {
 
     @ManyToOne
     @JoinColumn(name = "account_id")
-    private Accounts accountId;
+    private Accounts account;
 
     @Enumerated(EnumType.STRING)
     private PaymentStatuses paymentStatus;
 
     @ManyToOne
     @JoinColumn(name = "payment_method_id")
-    private PaymentMethods paymentMethodId;
-
-    @Column
-    private String paymentInfo;
+    private PaymentMethods paymentMethod;
 
     @Column
     private LocalDate paymentDate;

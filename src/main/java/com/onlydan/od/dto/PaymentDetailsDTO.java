@@ -1,5 +1,6 @@
 package com.onlydan.od.dto;
 
+import com.onlydan.od.enums.PaymentStatuses;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,14 +11,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaymentDetailsDTO {
+    private Long paymentDetailId;
 
-    private AccountsDTO accountId;
+    private Long accountId;
 
-    private PaymentStatusesDTO paymentStatusId;
+    private Long paymentMethodId;
 
-    private PaymentMethodsDTO paymentMethodId;
-
-    private String paymentInfo;
+    private PaymentStatuses paymentStatus;
 
     private LocalDate paymentDate;
 }

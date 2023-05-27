@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface PaymentMethodsMapper {
     PaymentMethodsMapper INSTANCE = Mappers.getMapper(PaymentMethodsMapper.class);
     PaymentMethodsDTO toDTO(PaymentMethods paymentMethods);

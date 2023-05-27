@@ -16,7 +16,7 @@ public class RoleAssignmentDTO {
 
     private Roles role;
 
-    private Long accountsId;
+    private Long accountId;
 
     private LocalDateTime assignedDate;
 

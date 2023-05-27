@@ -19,8 +19,8 @@ public interface RoleAssignmentMapper {
     RoleAssignmentDTO toDTO(RoleAssignment roleAssignment);
 
     @Named("mapAccountId")
-    default Long mapAccountId(Accounts accounts) {
-        return accounts.getAccountId();
+    default Long mapAccountId(Accounts account) {
+        return account.getAccountId();
     }
 
     List<RoleAssignmentDTO> toDTOs(List<RoleAssignment> roleAssignments);

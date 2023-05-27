@@ -25,7 +25,7 @@ public class RoleAssignmentService {
 
     //POST REQUEST
     public RoleAssignmentDTO createRoleAssignment(RoleAssignmentDTO roleAssignmentDTO) {
-        Accounts accounts = accountsRepository.findById(roleAssignmentDTO.getAccountsId())
+        Accounts accounts = accountsRepository.findById(roleAssignmentDTO.getAccountId())
                 .orElseThrow(AllExceptions::AccountNotFound);
 
         RoleAssignment roleAssignment = RoleAssignment.builder()
@@ -45,7 +45,7 @@ public class RoleAssignmentService {
         RoleAssignment roleAssignment = roleAssignmentRepository.findById(assignmentId)
                 .orElseThrow(AllExceptions::ProductInfoNotFound);
 
-        Accounts accounts = accountsRepository.findById(roleAssignmentDTO.getAccountsId())
+        Accounts accounts = accountsRepository.findById(roleAssignmentDTO.getAccountId())
                 .orElseThrow(AllExceptions::AccountNotFound);
 
         roleAssignment.setRole(roleAssignmentDTO.getRole());

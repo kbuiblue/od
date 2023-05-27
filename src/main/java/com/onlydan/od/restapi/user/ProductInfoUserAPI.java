@@ -25,5 +25,5 @@ public interface ProductInfoUserAPI {
     ResponseEntity<List<ProductInfoDTO>> getProductInfoByCountryId(@RequestParam("country-id") String countryId);
 
     @GetMapping("/{productId}")
-    ResponseEntity<ProductInfoDTO> getProductInfoById(@PathVariable("product-id") Long productId);
+    ResponseEntity<ProductInfoDTO> getProductInfoByProductId(@PathVariable("product-id") Long productId);
 }

@@ -18,12 +18,12 @@ public class ProductInfoUserResource implements ProductInfoUserAPI {
     //GET
     @Override
     public ResponseEntity<ProductInfoDTO> getProductInfoByProductName(String productName) {
-        log.info("Get product info by product name: {} ", productName);
+        log.info("Product name: {} fetched", productName);
         return ResponseEntity.ok(productInfoService.getProductInfoByProductName(productName));    }
 
     @Override
     public ResponseEntity<List<ProductInfoDTO>> getProductInfoByProductBrand(String productBrand) {
-        log.info("Get product info by product brand: {} ", productBrand);
+        log.info("Product brand: {} fetched", productBrand);
         return ResponseEntity.ok(productInfoService.getAllProductInfoByProductBrand(productBrand));
     }
 
@@ -43,7 +43,7 @@ public class ProductInfoUserResource implements ProductInfoUserAPI {
     }
 
     @Override
-    public ResponseEntity<ProductInfoDTO> getProductInfoById(Long productId) {
-        return ResponseEntity.ok(productInfoService.getProductInfoById(productId));
+    public ResponseEntity<ProductInfoDTO> getProductInfoByProductId(Long productId) {
+        return ResponseEntity.ok(productInfoService.getProductInfoByProductId(productId));
     }
 }

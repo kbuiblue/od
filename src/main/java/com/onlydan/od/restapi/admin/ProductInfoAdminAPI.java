@@ -11,9 +11,9 @@ public interface ProductInfoAdminAPI {
 
     //PUT REQUESTS
     @PutMapping("/{product-id}")
-    ResponseEntity<ProductInfoDTO> updateProductInfoById(@PathVariable("product-id") Long productId, @RequestBody ProductInfoDTO productInfoDTO);
+    ResponseEntity<ProductInfoDTO> updateProductInfoByProductId(@PathVariable("product-id") Long productId, @RequestBody ProductInfoDTO productInfoDTO);
 
     //DELETE REQUESTS
     @DeleteMapping("/{product-id}")
-    ResponseEntity<Void> deleteProductInfoById(@PathVariable("product-id") Long productId);
+    ResponseEntity<Void> deleteProductInfoByProductId(@PathVariable("product-id") Long productId);
 }

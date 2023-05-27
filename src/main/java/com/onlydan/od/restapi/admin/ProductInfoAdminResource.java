@@ -19,15 +19,15 @@ public class ProductInfoAdminResource implements ProductInfoAdminAPI {
     // POST
     @Override
     public ResponseEntity<ProductInfoDTO> createProductInfo(ProductInfoDTO productInfoDTO) {
-        log.info("Product: " + productInfoDTO.getProductName() + " added");
+        log.info("Product: " + productInfoDTO.getProductName() + " created");
         ProductInfoDTO productInfoDto = productInfoService.createProductInfo(productInfoDTO);
         return ResponseEntity.created(URI.create("/api/product-info" + productInfoDto.getProductId())).body(productInfoDto);
     }
     // PUT
     @Override
-    public ResponseEntity<ProductInfoDTO> updateProductInfoById(Long productId, ProductInfoDTO productInfoDTO) {
+    public ResponseEntity<ProductInfoDTO> updateProductInfoByProductId(Long productId, ProductInfoDTO productInfoDTO) {
         log.info("Product id #{} updated", productId);
-        ProductInfoDTO productInfoDto = productInfoService.updateProductInfoById(productId, productInfoDTO);
+        ProductInfoDTO productInfoDto = productInfoService.updateProductInfoByProductId(productId, productInfoDTO);
         return ResponseEntity.ok(productInfoDto);
     }
 
@@ -35,9 +35,9 @@ public class ProductInfoAdminResource implements ProductInfoAdminAPI {
 
     //DELETE
     @Override
-    public ResponseEntity<Void> deleteProductInfoById(Long productId) {
+    public ResponseEntity<Void> deleteProductInfoByProductId(Long productId) {
         log.info("Product id #{} deleted", productId);
-        productInfoService.deleteProductInfoById(productId);
+        productInfoService.deleteProductInfoByProductId(productId);
         return ResponseEntity.noContent().build();
     }
 }

@@ -32,8 +32,11 @@ public class ProductInfo {
     @Column
     private Integer productYear;
 
-    @OneToMany(mappedBy = "productId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "orderDetailId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<OrderDetails> orderDetails;
+
+    @OneToMany(mappedBy = "productInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Inventory> inventoryList;
 
     @ManyToOne
     @JoinColumn(name = "country_id")

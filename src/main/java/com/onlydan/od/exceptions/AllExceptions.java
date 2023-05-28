@@ -32,15 +32,35 @@ public class AllExceptions {
         return notFound("COUNTRY NOT FOUND", "Sorry, this country does not exist in our database.");
     }
 
-    public static ResponseException AccountNameAlreadyExists() {
-        return badRequest("NAME ALREADY EXISTS", "Sorry, this account name already exists.");
-    }
-
     public static ResponseException AccountNotFound() {
         return notFound("ACCOUNT NOT FOUND", "Sorry, this account does not exist.");
     }
 
+    public static ResponseException AccountNameAlreadyExists() {
+        return badRequest("NAME ALREADY EXISTS", "Sorry, this account name already exists.");
+    }
+
     public static ResponseException RoleAssignmentNotFound() {
-        return notFound("ROLE ASSIGNMENT NOT FOUND", "Sorry, this role assignment does not exist.");
+        return notFound("ASSIGNMENT NOT FOUND", "Sorry, this role assignment does not exist.");
+    }
+
+    public static ResponseException PaymentMethodNotFound() {
+        return notFound("METHOD NOT FOUND", "Sorry, this payment method does not exist.");
+    }
+
+    public static ResponseException PaymentMethodAlreadyExists() {
+        return badRequest("METHOD ALREADY EXISTS", "Sorry, this payment method already exists.");
+    }
+
+    public static ResponseException PaymentDetailNotFound() {
+        return notFound("DETAILS NOT FOUND", "Sorry, this payment details does not exist.");
+    }
+
+    public static ResponseException StockChangeNotFound() {
+        return notFound("CHANGE NOT FOUND", "Sorry, this stock change does not exist.");
+    }
+
+    public static ResponseException InventoryNotFound() {
+        return notFound("INVENTORY NOT FOUND", "Sorry, this inventory record does not exist.");
     }
 }

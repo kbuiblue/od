@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.onlydan.od.mappers",
+@ComponentScan(basePackages =
+        {"com.onlydan.od.mappers",
         "com.onlydan.od.services",
         "com.onlydan.od.security.config",
         "com.onlydan.od.security.impl",

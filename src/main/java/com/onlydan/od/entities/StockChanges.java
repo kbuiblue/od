@@ -19,6 +19,9 @@ public class StockChanges {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stockChangeId;
 
+    @OneToOne(mappedBy = "stockChange", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Inventory inventory;
+
     @Column
     private LocalDate changeDate;
 

@@ -64,7 +64,7 @@ public class AuthResource implements AuthAPI {
 
         //Assign new account a default "ROLE_USER"
         RoleAssignmentDTO newRoleAssignment = new RoleAssignmentDTO();
-        newRoleAssignment.setAccountsId(newAccount.getAccountId());
+        newRoleAssignment.setAccountId(newAccount.getAccountId());
         newRoleAssignment.setRole(Roles.valueOf("ROLE_USER"));
         newRoleAssignment.setAssignedDate(LocalDateTime.now());
 

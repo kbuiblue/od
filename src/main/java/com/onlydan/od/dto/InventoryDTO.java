@@ -1,7 +1,5 @@
 package com.onlydan.od.dto;
 
-
-import com.onlydan.od.entities.StockChanges;
 import com.onlydan.od.enums.InventoryStatuses;
 import com.onlydan.od.enums.ShippingStatuses;
 import lombok.AllArgsConstructor;
@@ -13,10 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class InventoryDTO {
+    private Long inventoryId;
 
-    private ShippingStatuses shippingStatusId;
+    private ShippingStatuses shippingStatus;
 
-    private InventoryStatuses inventoryStatusId;
+    private InventoryStatuses inventoryStatus;
 
-    private StockChanges stockChangeId;
+    private Long productId;
+
+    private Long stockChangeId;
 }

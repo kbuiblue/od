@@ -18,7 +18,7 @@ import javax.transaction.Transactional;
 @Transactional
 @RequiredArgsConstructor
 public class PaymentDetailsService {
-    public final PaymentDetailsRepository paymentDetailsRepository;
+    private final PaymentDetailsRepository paymentDetailsRepository;
     private final AccountsRepository accountsRepository;
     private final PaymentMethodsRepository paymentMethodsRepository;
     private final PaymentDetailsMapper paymentMethodsMapper;
@@ -52,7 +52,7 @@ public class PaymentDetailsService {
         PaymentMethods paymentMethod = paymentMethodsRepository.findById(paymentDetailsDTO.getPaymentMethodId())
                 .orElseThrow(AllExceptions::PaymentMethodNotFound);
         PaymentDetails paymentDetails = paymentDetailsRepository.findById(detailsId)
-                .orElseThrow(AllExceptions::PaymentDetailsNotFound);
+                .orElseThrow(AllExceptions::PaymentDetailNotFound);
 
         paymentDetails.setAccount(account);
         paymentDetails.setPaymentMethod(paymentMethod);
@@ -67,7 +67,7 @@ public class PaymentDetailsService {
     // GET REQUESTS
     public PaymentDetailsDTO getPaymentDetailsByDetailId(Long detailsId) {
         PaymentDetails paymentDetails = paymentDetailsRepository.findById(detailsId)
-                .orElseThrow(AllExceptions::PaymentDetailsNotFound);
+                .orElseThrow(AllExceptions::PaymentDetailNotFound);
 
         return paymentMethodsMapper.INSTANCE.toDTO(paymentDetails);
     }

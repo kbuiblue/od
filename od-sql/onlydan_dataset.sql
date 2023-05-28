@@ -120,18 +120,18 @@ values
 
 
 insert into payment_details
-(account_id, payment_status, payment_method_id, payment_info, payment_date)
+(account_id, payment_status, payment_method_id, payment_date)
 values 
-(3, 'PROCESSING', 2, 'visa 4041372876813', '2022-01-03'),
-(6, 'PAID', 2, 'jcb 3589469485790273', '2022-01-10'),
-(2, 'NOT_PAID', 4, null, '2022-01-28'),
-(7, 'PROCESSING', 1, null, '2022-02-03'),
-(9, 'PAYMENT_FAILED', 4, null, '2022-02-14'),
-(10, 'NOT_PAID', 4, null, '2022-02-16'),
-(10, 'PROCESSING', 2, 'jcb 3530077237189767', '2022-02-16'),
-(10, 'NOT_PAID', 3, null, '2022-08-14'),
-(6, 'PAID', 2, 'visa-electron 4508049150756167', '2022-09-27'),
-(6, 'PROCESSING', 4, null, '2022-09-18'),
+(3, 'PROCESSING', 2, '2022-01-03'),
+(6, 'PAID', 2, '2022-01-10'),
+(2, 'NOT_PAID', 4, '2022-01-28'),
+(7, 'PROCESSING', 1, '2022-02-03'),
+(9, 'PAYMENT_FAILED', 4, '2022-02-14'),
+(10, 'NOT_PAID', 4, '2022-02-16'),
+(10, 'PROCESSING', 2, '2022-02-16'),
+(10, 'NOT_PAID', 3, '2022-08-14'),
+(6, 'PAID', 2, '2022-09-27'),
+(6, 'PROCESSING', 4, '2022-09-18'),
 (6, 3, 3, null, 7, '2022-09-27'),
 (25, 4, 1, null, 25, '2022-05-31'),
 (18, 1, 4, null, 13, '2023-03-10'),

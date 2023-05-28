@@ -20,7 +20,7 @@ public class PaymentMethodsService {
     //POST REQUESTS
     public PaymentMethodsDTO createPaymentMethod(PaymentMethodsDTO paymentMethodsDTO) {
         if(paymentMethodsRepository.getPaymentMethodByMethodName(paymentMethodsDTO.getMethodName()).isEmpty())
-            throw AllExceptions.PaymentMethodsAlreadyExists();
+            throw AllExceptions.PaymentMethodAlreadyExists();
 
         PaymentMethods paymentMethods = PaymentMethods.builder()
                 .methodName(paymentMethodsDTO.getMethodName())

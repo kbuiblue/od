@@ -11,11 +11,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class OrderDetailsDTO {
 
-    private OrdersDTO orderId;
+    private Long orderDetailsId;
 
-    private ProductInfoDTO productId;
+    private Long productId;
 
-    private Integer productPrice;
+    private Long orderId;
+
+    private Double productPrice;
 
     private Boolean isOnSale;
 

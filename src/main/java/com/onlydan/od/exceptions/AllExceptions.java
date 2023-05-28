@@ -63,4 +63,12 @@ public class AllExceptions {
     public static ResponseException InventoryNotFound() {
         return notFound("INVENTORY NOT FOUND", "Sorry, this inventory record does not exist.");
     }
+
+    public static ResponseException OrderNotFound() {
+        return notFound("ORDER NOT FOUND", "Sorry, this order does not exist.");
+    }
+
+    public static ResponseException OrderDetailsNotFound() {
+        return notFound("DETAILS NOT FOUND", "Sorry, this order details does not exist.");
+    }
 }

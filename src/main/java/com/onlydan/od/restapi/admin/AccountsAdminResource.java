@@ -52,5 +52,4 @@ public class AccountsAdminResource implements AccountsAdminAPI {
         accountsService.deleteAccountByAccountId(accountId);
         return ResponseEntity.noContent().build();
     }
-
 }

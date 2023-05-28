@@ -32,7 +32,7 @@ public class ProductInfo {
     @Column
     private Integer productYear;
 
-    @OneToMany(mappedBy = "orderDetailId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "productInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<OrderDetails> orderDetails;
 
     @OneToMany(mappedBy = "productInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

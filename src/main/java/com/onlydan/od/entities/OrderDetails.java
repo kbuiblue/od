@@ -16,15 +16,15 @@ import java.time.LocalDate;
 public class OrderDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderDetailId;
-
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    private Orders orderId;
+    private Long orderDetailsId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
-    private ProductInfo productId;
+    private ProductInfo productInfo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Orders order;
 
     @Column(precision = 10, scale = 2)
     private Double productPrice;

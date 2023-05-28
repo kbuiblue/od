@@ -11,5 +11,5 @@ public class OrdersDTO {
 
     private Long orderId;
 
-    private PaymentDetailsDTO paymentDetailId;
+    private Long paymentDetailId;
 }

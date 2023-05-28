@@ -27,7 +27,7 @@ public class PaymentDetailsAdminResource implements PaymentDetailsAdminAPI {
     @Override
     public ResponseEntity<PaymentDetailsDTO> updatePaymentDetailsByDetailId(Long paymentDetailsId, PaymentDetailsDTO paymentDetailsDTO) {
         log.info("Payment detail #{} updated", paymentDetailsId);
-        PaymentDetailsDTO paymentDetailDto = paymentDetailsService.updatePaymentDetailsByDetailId(paymentDetailsId, paymentDetailsDTO);
+        PaymentDetailsDTO paymentDetailDto = paymentDetailsService.updatePaymentDetailsByDetailsId(paymentDetailsId, paymentDetailsDTO);
         return ResponseEntity.ok(paymentDetailDto);
     }
 
@@ -35,14 +35,14 @@ public class PaymentDetailsAdminResource implements PaymentDetailsAdminAPI {
     @Override
     public ResponseEntity<PaymentDetailsDTO> getPaymentDetailsByDetailId(Long paymentDetailsId) {
         log.info("Payment detail #{} fetched", paymentDetailsId);
-        return ResponseEntity.ok(paymentDetailsService.getPaymentDetailsByDetailId(paymentDetailsId));
+        return ResponseEntity.ok(paymentDetailsService.getPaymentDetailsByDetailsId(paymentDetailsId));
     }
 
     // DELETE
     @Override
     public ResponseEntity<Void> deletePaymentDetailsByDetailId(Long paymentDetailsId) {
         log.info("Payment detail #{} deleted", paymentDetailsId);
-        paymentDetailsService.deletePaymentDetailsByDetailId(paymentDetailsId);
+        paymentDetailsService.deletePaymentDetailsByDetailsId(paymentDetailsId);
         return ResponseEntity.noContent().build();
     }
 }

@@ -46,7 +46,7 @@ public class PaymentDetailsService {
 
     // PUT REQUESTS
 
-    public PaymentDetailsDTO updatePaymentDetailsByDetailId(Long detailsId, PaymentDetailsDTO paymentDetailsDTO) {
+    public PaymentDetailsDTO updatePaymentDetailsByDetailsId(Long detailsId, PaymentDetailsDTO paymentDetailsDTO) {
         Accounts account = accountsRepository.findById(paymentDetailsDTO.getAccountId())
                 .orElseThrow(AllExceptions::AccountNotFound);
         PaymentMethods paymentMethod = paymentMethodsRepository.findById(paymentDetailsDTO.getPaymentMethodId())
@@ -59,13 +59,13 @@ public class PaymentDetailsService {
         paymentDetails.setPaymentStatus(paymentDetailsDTO.getPaymentStatus());
         paymentDetails.setPaymentDate(paymentDetailsDTO.getPaymentDate());
 
-        PaymentDetails savedPaymentDetails = paymentDetailsRepository.save(paymentDetails);
+        PaymentDetails updatedPaymentDetails = paymentDetailsRepository.save(paymentDetails);
 
-        return paymentMethodsMapper.INSTANCE.toDTO(savedPaymentDetails);
+        return paymentMethodsMapper.INSTANCE.toDTO(updatedPaymentDetails);
     }
 
     // GET REQUESTS
-    public PaymentDetailsDTO getPaymentDetailsByDetailId(Long detailsId) {
+    public PaymentDetailsDTO getPaymentDetailsByDetailsId(Long detailsId) {
         PaymentDetails paymentDetails = paymentDetailsRepository.findById(detailsId)
                 .orElseThrow(AllExceptions::PaymentDetailNotFound);
 
@@ -73,7 +73,7 @@ public class PaymentDetailsService {
     }
 
     // DELETE REQUESTS
-    public void deletePaymentDetailsByDetailId(Long detailsId) {
+    public void deletePaymentDetailsByDetailsId(Long detailsId) {
         paymentDetailsRepository.deleteById(detailsId);
     }
 }

@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class PaymentDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long paymentDetailId;
+    private Long paymentDetailsId;
 
     @ManyToOne
     @JoinColumn(name = "account_id")

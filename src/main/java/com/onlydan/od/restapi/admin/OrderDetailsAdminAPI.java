@@ -1,8 +1,6 @@
 package com.onlydan.od.restapi.admin;
 
-import com.onlydan.od.dto.DailyOrdersDTO;
-import com.onlydan.od.dto.DailyRevenueDTO;
-import com.onlydan.od.dto.OrderDetailsDTO;
+import com.onlydan.od.dto.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +35,22 @@ public interface OrderDetailsAdminAPI {
                                                                      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
                                                                      @RequestParam("endDate")
                                                                      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate endDate);
+
+    @GetMapping("/best-selling")
+    ResponseEntity<List<BestSellingProductsDTO>>
+            getBestSellingProductsFromDateRange(@RequestParam("topN") Integer topN,
+                                                @RequestParam("startDate")
+                                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                                @RequestParam("endDate")
+                                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate endDate);
+
+    @GetMapping("/worst-selling")
+    ResponseEntity<List<WorstSellingProductsDTO>>
+            getWorstSellingProductsFromDateRange(@RequestParam("topN") Integer topN,
+                                                @RequestParam("startDate")
+                                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                                @RequestParam("endDate")
+                                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate endDate);
 
     // DELETE REQUESTS
     @DeleteMapping("/{details-id}")

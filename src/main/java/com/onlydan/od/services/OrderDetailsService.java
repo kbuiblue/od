@@ -1,8 +1,6 @@
 package com.onlydan.od.services;
 
-import com.onlydan.od.dto.DailyOrdersDTO;
-import com.onlydan.od.dto.DailyRevenueDTO;
-import com.onlydan.od.dto.OrderDetailsDTO;
+import com.onlydan.od.dto.*;
 import com.onlydan.od.entities.OrderDetails;
 import com.onlydan.od.entities.Orders;
 import com.onlydan.od.entities.ProductInfo;
@@ -83,6 +81,14 @@ public class OrderDetailsService {
 
     public List<DailyOrdersDTO> getDailyOrdersFromDateRange(LocalDate startDate, LocalDate endDate) {
         return orderDetailsRepository.getDailyOrdersFromDateRange(startDate, endDate);
+    }
+
+    public List<BestSellingProductsDTO> getBestSellingProductsFromDateRange(Integer topN, LocalDate startDate, LocalDate endDate) {
+        return orderDetailsRepository.getBestSellingProductsFromDateRange(topN, startDate, endDate);
+    }
+
+    public List<WorstSellingProductsDTO> getWorstSellingProductsFromDateRange(Integer topN, LocalDate startDate, LocalDate endDate) {
+        return orderDetailsRepository.getWorstSellingProductsFromDateRange(topN, startDate, endDate);
     }
 
     //DELETE REQUESTS

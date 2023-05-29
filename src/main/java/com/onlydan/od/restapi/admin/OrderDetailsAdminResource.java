@@ -1,8 +1,6 @@
 package com.onlydan.od.restapi.admin;
 
-import com.onlydan.od.dto.DailyOrdersDTO;
-import com.onlydan.od.dto.DailyRevenueDTO;
-import com.onlydan.od.dto.OrderDetailsDTO;
+import com.onlydan.od.dto.*;
 import com.onlydan.od.services.OrderDetailsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +48,16 @@ public class OrderDetailsAdminResource implements OrderDetailsAdminAPI {
     @Override
     public ResponseEntity<List<DailyOrdersDTO>> getDailyOrdersFromDateRange(LocalDate startDate, LocalDate endDate) {
         return ResponseEntity.ok(orderDetailsService.getDailyOrdersFromDateRange(startDate, endDate));
+    }
+
+    @Override
+    public ResponseEntity<List<BestSellingProductsDTO>> getBestSellingProductsFromDateRange(Integer topN, LocalDate startDate, LocalDate endDate) {
+        return ResponseEntity.ok(orderDetailsService.getBestSellingProductsFromDateRange(topN, startDate, endDate));
+    }
+
+    @Override
+    public ResponseEntity<List<WorstSellingProductsDTO>> getWorstSellingProductsFromDateRange(Integer topN, LocalDate startDate, LocalDate endDate) {
+        return ResponseEntity.ok(orderDetailsService.getWorstSellingProductsFromDateRange(topN, startDate, endDate));
     }
 
     // DELETE

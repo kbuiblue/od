@@ -1,5 +1,7 @@
 package com.onlydan.od.services;
 
+import com.onlydan.od.dto.DailyOrdersDTO;
+import com.onlydan.od.dto.DailyRevenueDTO;
 import com.onlydan.od.dto.OrderDetailsDTO;
 import com.onlydan.od.entities.OrderDetails;
 import com.onlydan.od.entities.Orders;
@@ -13,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Transactional
@@ -71,6 +75,14 @@ public class OrderDetailsService {
         OrderDetails orderDetails = orderDetailsRepository.findById(detailsId)
                 .orElseThrow(AllExceptions::OrderDetailsNotFound);
         return orderDetailsMapper.INSTANCE.toDTO(orderDetails);
+    }
+
+    public List<DailyRevenueDTO> getDailyRevenueFromDateRange(LocalDate startDate, LocalDate endDate) {
+        return orderDetailsRepository.getDailyRevenueFromDateRange(startDate, endDate);
+    }
+
+    public List<DailyOrdersDTO> getDailyOrdersFromDateRange(LocalDate startDate, LocalDate endDate) {
+        return orderDetailsRepository.getDailyOrdersFromDateRange(startDate, endDate);
     }
 
     //DELETE REQUESTS

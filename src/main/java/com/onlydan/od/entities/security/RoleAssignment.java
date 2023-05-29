@@ -23,7 +23,7 @@ public class RoleAssignment {
     private Long assignmentId;
 
     @Enumerated(EnumType.STRING)
-    private Roles role;
+    private Roles roleName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")

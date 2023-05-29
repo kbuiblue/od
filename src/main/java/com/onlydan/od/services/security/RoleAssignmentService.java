@@ -29,7 +29,7 @@ public class RoleAssignmentService {
                 .orElseThrow(AllExceptions::AccountNotFound);
 
         RoleAssignment roleAssignment = RoleAssignment.builder()
-                .role(roleAssignmentDTO.getRole())
+                .roleName(roleAssignmentDTO.getRole())
                 .account(accounts)
                 .assignedDate(roleAssignmentDTO.getAssignedDate())
                 .updatedDate(roleAssignmentDTO.getUpdatedDate())
@@ -48,7 +48,7 @@ public class RoleAssignmentService {
         Accounts accounts = accountsRepository.findById(roleAssignmentDTO.getAccountId())
                 .orElseThrow(AllExceptions::AccountNotFound);
 
-        roleAssignment.setRole(roleAssignmentDTO.getRole());
+        roleAssignment.setRoleName(roleAssignmentDTO.getRole());
         roleAssignment.setAccount(accounts);
         roleAssignment.setAssignedDate(roleAssignmentDTO.getAssignedDate());
         roleAssignment.setUpdatedDate(roleAssignmentDTO.getUpdatedDate());

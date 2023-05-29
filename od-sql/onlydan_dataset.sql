@@ -63,6 +63,20 @@ VALUES
 ('EDITOR', 'SELECT, INSERT, UPDATE'),
 ('USER', 'SELECT');
 
+insert into role_assignment
+(assigned_date, role_name, account_id)
+values
+('2023-05-29', 'ROLE_ADMIN', 1),
+('2023-05-29', 'ROLE_USER', 2),
+('2023-05-29', 'ROLE_USER', 3),
+('2023-05-29', 'ROLE_USER', 4),
+('2023-05-29', 'ROLE_USER', 5),
+('2023-05-29', 'ROLE_USER', 6),
+('2023-05-29', 'ROLE_USER', 7),
+('2023-05-29', 'ROLE_USER', 8),
+('2023-05-29', 'ROLE_USER', 9),
+('2023-05-29', 'ROLE_USER', 10);
+
 insert into accounts
 (account_name, account_password, first_name, last_name, phone_number, address, email, gender)
 values 

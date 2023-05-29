@@ -1,5 +1,7 @@
 package com.onlydan.od.restapi.admin;
 
+import com.onlydan.od.dto.DailyOrdersDTO;
+import com.onlydan.od.dto.DailyRevenueDTO;
 import com.onlydan.od.dto.OrderDetailsDTO;
 import com.onlydan.od.services.OrderDetailsService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -36,6 +40,16 @@ public class OrderDetailsAdminResource implements OrderDetailsAdminAPI {
     public ResponseEntity<OrderDetailsDTO> getOrderDetailsByDetailsId(Long detailsId) {
         log.info("Order details id #{} fetched", detailsId);
         return ResponseEntity.ok(orderDetailsService.getOrderDetailsByDetailsId(detailsId));
+    }
+
+    @Override
+    public ResponseEntity<List<DailyRevenueDTO>> getDailyRevenueFromDateRange(LocalDate startDate, LocalDate endDate) {
+        return ResponseEntity.ok(orderDetailsService.getDailyRevenueFromDateRange(startDate, endDate));
+    }
+
+    @Override
+    public ResponseEntity<List<DailyOrdersDTO>> getDailyOrdersFromDateRange(LocalDate startDate, LocalDate endDate) {
+        return ResponseEntity.ok(orderDetailsService.getDailyOrdersFromDateRange(startDate, endDate));
     }
 
     // DELETE

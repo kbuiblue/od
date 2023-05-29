@@ -19,7 +19,7 @@ public class AccountsDTO {
      
     private String accountPassword;
 
-    private Roles role;
+    private Roles roleName;
 
     private String firstName;
 

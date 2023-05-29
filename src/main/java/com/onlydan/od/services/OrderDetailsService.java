@@ -1,6 +1,7 @@
 package com.onlydan.od.services;
 
 import com.onlydan.od.dto.*;
+import com.onlydan.od.dto.custom.*;
 import com.onlydan.od.entities.OrderDetails;
 import com.onlydan.od.entities.Orders;
 import com.onlydan.od.entities.ProductInfo;
@@ -89,6 +90,10 @@ public class OrderDetailsService {
 
     public List<WorstSellingProductsDTO> getWorstSellingProductsFromDateRange(Integer topN, LocalDate startDate, LocalDate endDate) {
         return orderDetailsRepository.getWorstSellingProductsFromDateRange(topN, startDate, endDate);
+    }
+
+    public List<TotalAnnualRevenueDTO> getTotalAnnualRevenue(Integer businessYear) {
+        return orderDetailsRepository.getTotalAnnualRevenue(businessYear);
     }
 
     //DELETE REQUESTS

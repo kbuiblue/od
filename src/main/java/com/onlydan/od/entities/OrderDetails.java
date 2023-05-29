@@ -1,5 +1,6 @@
 package com.onlydan.od.entities;
 
+import com.onlydan.od.dto.custom.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -76,22 +77,41 @@ import java.time.LocalDate;
         @NamedNativeQuery(
                 name = "OrderDetails.getWorstSellingProductsFromDateRange",
                 query = """
-                        WITH worst_sales AS (
-                            SELECT DISTINCT pi2.product_name, od.product_price, od.product_quantity\s
-                            FROM order_details od, product_info pi2, inventory i, stock_changes sc \s
-                            WHERE od.product_id =  pi2.product_id\s
-                            AND i.product_id = pi2.product_id
-                            AND i.stock_change_id = sc.stock_change_id
-                            AND sc.change_type = 'OUTGOING'
-                            AND od.order_date BETWEEN :startDate AND :endDate
-                        )
-                        SELECT ws.product_name, SUM(ws.product_quantity) AS sales_amount
-                        FROM worst_sales ws
-                        GROUP BY ws.product_name
-                        ORDER BY sales_amount ASC
-                        LIMIT :topN
-                    """,
+                            WITH worst_sales AS (
+                                SELECT DISTINCT pi2.product_name, od.product_price, od.product_quantity\s
+                                FROM order_details od, product_info pi2, inventory i, stock_changes sc \s
+                                WHERE od.product_id =  pi2.product_id\s
+                                AND i.product_id = pi2.product_id
+                                AND i.stock_change_id = sc.stock_change_id
+                                AND sc.change_type = 'OUTGOING'
+                                AND od.order_date BETWEEN :startDate AND :endDate
+                            )
+                            SELECT ws.product_name, SUM(ws.product_quantity) AS sales_amount
+                            FROM worst_sales ws
+                            GROUP BY ws.product_name
+                            ORDER BY sales_amount ASC
+                            LIMIT :topN
+                        """,
                 resultSetMapping = "WorstSellingProductsDTOMapping"
+        ),
+        @NamedNativeQuery(
+                name = "OrderDetails.getTotalAnnualRevenue",
+                query = """
+                            WITH total_revenue AS (
+                                SELECT EXTRACT(YEAR FROM od.order_date) as business_year, pi2.product_name, od.product_price, od.product_quantity
+                                FROM order_details od, product_info pi2, inventory i, stock_changes sc
+                                WHERE od.product_id =  pi2.product_id
+                                AND i.product_id = pi2.product_id
+                                AND i.stock_change_id = sc.stock_change_id
+                                AND sc.change_type = 'OUTGOING'
+                                AND EXTRACT(YEAR FROM od.order_date) = :businessYear
+                            )
+                            SELECT tr.business_year, SUM(tr.product_price * tr.product_quantity) AS total_annual_revenue
+                            FROM total_revenue tr
+                            GROUP BY business_year
+                            ORDER BY business_year ASC
+                        """,
+                resultSetMapping = "TotalAnnualRevenueDTOMapping"
         )}
 )
 
@@ -99,7 +119,7 @@ import java.time.LocalDate;
         @SqlResultSetMapping(
                 name = "DailyRevenueDTOMapping",
                 classes = @ConstructorResult(
-                        targetClass = com.onlydan.od.dto.DailyRevenueDTO.class,
+                        targetClass = DailyRevenueDTO.class,
                         columns = {
                                 @ColumnResult(name = "order_date", type = LocalDate.class),
                                 @ColumnResult(name = "daily_revenue", type = Double.class)
@@ -109,7 +129,7 @@ import java.time.LocalDate;
         @SqlResultSetMapping(
                 name = "DailyOrdersDTOMapping",
                 classes = @ConstructorResult(
-                        targetClass = com.onlydan.od.dto.DailyOrdersDTO.class,
+                        targetClass = DailyOrdersDTO.class,
                         columns = {
                                 @ColumnResult(name = "order_date", type = LocalDate.class),
                                 @ColumnResult(name = "daily_orders", type = Integer.class)
@@ -119,7 +139,7 @@ import java.time.LocalDate;
         @SqlResultSetMapping(
                 name = "BestSellingProductsDTOMapping",
                 classes = @ConstructorResult(
-                        targetClass = com.onlydan.od.dto.BestSellingProductsDTO.class,
+                        targetClass = BestSellingProductsDTO.class,
                         columns = {
                                 @ColumnResult(name = "product_name", type = String.class),
                                 @ColumnResult(name = "sales_amount", type = Integer.class)
@@ -129,10 +149,20 @@ import java.time.LocalDate;
         @SqlResultSetMapping(
                 name = "WorstSellingProductsDTOMapping",
                 classes = @ConstructorResult(
-                        targetClass = com.onlydan.od.dto.WorstSellingProductsDTO.class,
+                        targetClass = WorstSellingProductsDTO.class,
                         columns = {
                                 @ColumnResult(name = "product_name", type = String.class),
                                 @ColumnResult(name = "sales_amount", type = Integer.class)
+                        }
+                )
+        ),
+        @SqlResultSetMapping(
+                name = "TotalAnnualRevenueDTOMapping",
+                classes = @ConstructorResult(
+                        targetClass = TotalAnnualRevenueDTO.class,
+                        columns = {
+                                @ColumnResult(name = "business_year", type = Integer.class),
+                                @ColumnResult(name = "total_annual_revenue", type = Double.class)
                         }
                 )
         )}

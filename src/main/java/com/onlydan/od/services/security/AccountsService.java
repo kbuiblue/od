@@ -1,6 +1,7 @@
 package com.onlydan.od.services.security;
 
 import com.onlydan.od.dto.AccountsDTO;
+import com.onlydan.od.dto.custom.TopCustomersDTO;
 import com.onlydan.od.entities.Accounts;
 import com.onlydan.od.exceptions.AllExceptions;
 import com.onlydan.od.mappers.security.AccountsMapper;
@@ -9,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -74,6 +77,12 @@ public class AccountsService {
 
         return accountsMapper.INSTANCE.toDTO(accounts);
     }
+
+    public List<TopCustomersDTO> getTopCustomersFromDateRange(Integer topN, LocalDate startDate, LocalDate endDate) {
+        return accountsRepository.getTopCustomersFromDateRange(topN, startDate, endDate);
+    }
+
+
 
     //DELETE REQUEST
 

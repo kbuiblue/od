@@ -1,6 +1,7 @@
 package com.onlydan.od.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.onlydan.od.dto.custom.TopCustomersDTO;
 import com.onlydan.od.enums.Gender;
 import com.onlydan.od.entities.security.RoleAssignment;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,38 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedNativeQuery(
+        name = "Accounts.getTopCustomersFromDateRange",
+        query = """
+                    WITH top_customers AS (
+                        SELECT DISTINCT a.account_id, a.account_name,
+                        CONCAT(a.first_name || ' ' || a.last_name) as customer_name,
+                        o.order_id
+                        FROM order_details od, orders o, payment_details pd, accounts a
+                        WHERE od.order_id =  o.order_id
+                        AND o.payment_details_id = pd.payment_details_id
+                        AND pd.account_id = a.account_id
+                        AND od.order_date BETWEEN :startDate AND :endDate
+                    )
+                    SELECT tc.customer_name, count(tc.order_id) AS number_of_purchases
+                    FROM top_customers tc
+                    GROUP BY tc.customer_name
+                    ORDER BY number_of_purchases desc
+                    LIMIT :topN
+                """,
+        resultSetMapping = "TopCustomersDTOMapping")
+
+@SqlResultSetMapping(
+        name = "TopCustomersDTOMapping",
+        classes = @ConstructorResult(
+                targetClass = TopCustomersDTO.class,
+                columns = {
+                        @ColumnResult(name = "customer_name", type = String.class),
+                        @ColumnResult(name = "number_of_purchases", type = Integer.class)
+                }
+        )
+)
+
 public class Accounts {
     @Id
     @Column(name = "account_id")

@@ -1,6 +1,7 @@
 package com.onlydan.od.restapi.admin;
 
 import com.onlydan.od.dto.*;
+import com.onlydan.od.dto.custom.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +52,9 @@ public interface OrderDetailsAdminAPI {
                                                 @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
                                                 @RequestParam("endDate")
                                                 @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate endDate);
+
+    @GetMapping("/annual-revenue")
+    ResponseEntity<List<TotalAnnualRevenueDTO>> getTotalAnnualRevenue(@RequestParam("businessYear") Integer businessYear);
 
     // DELETE REQUESTS
     @DeleteMapping("/{details-id}")

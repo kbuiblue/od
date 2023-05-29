@@ -1,6 +1,7 @@
 package com.onlydan.od.restapi.admin;
 
 import com.onlydan.od.dto.*;
+import com.onlydan.od.dto.custom.*;
 import com.onlydan.od.services.OrderDetailsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -58,6 +59,11 @@ public class OrderDetailsAdminResource implements OrderDetailsAdminAPI {
     @Override
     public ResponseEntity<List<WorstSellingProductsDTO>> getWorstSellingProductsFromDateRange(Integer topN, LocalDate startDate, LocalDate endDate) {
         return ResponseEntity.ok(orderDetailsService.getWorstSellingProductsFromDateRange(topN, startDate, endDate));
+    }
+
+    @Override
+    public ResponseEntity<List<TotalAnnualRevenueDTO>> getTotalAnnualRevenue(Integer businessYear) {
+        return ResponseEntity.ok(orderDetailsService.getTotalAnnualRevenue(businessYear));
     }
 
     // DELETE

@@ -57,3 +57,19 @@ FROM worst_sales ws
 GROUP BY ws.product_name
 ORDER BY sales_amount asc
 LIMIT 3;
+
+WITH top_customers AS (
+    SELECT DISTINCT a.account_id, a.account_name,
+    concat(a.first_name || ' ' || a.last_name) as customer_name,
+    o.order_id
+    from order_details od, orders o, payment_details pd, accounts a
+    where od.order_id =  o.order_id
+    AND o.payment_details_id = pd.payment_details_id
+    AND pd.account_id = a.account_id
+    AND od.order_date BETWEEN '2022-04-01' AND '2022-07-01'
+)
+SELECT tc.customer_name, count(tc.order_id) AS number_of_purchases
+FROM top_customers tc
+GROUP BY tc.customer_name
+ORDER BY number_of_purchases desc
+LIMIT 5;

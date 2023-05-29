@@ -1,9 +1,6 @@
 package com.onlydan.od.repositories;
 
-import com.onlydan.od.dto.BestSellingProductsDTO;
-import com.onlydan.od.dto.DailyOrdersDTO;
-import com.onlydan.od.dto.DailyRevenueDTO;
-import com.onlydan.od.dto.WorstSellingProductsDTO;
+import com.onlydan.od.dto.custom.*;
 import com.onlydan.od.entities.OrderDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -32,4 +29,7 @@ public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long
     List<WorstSellingProductsDTO> getWorstSellingProductsFromDateRange(@Param("topN") Integer topN,
                                                                        @Param("startDate") LocalDate startDate,
                                                                        @Param("endDate") LocalDate endDate);
+
+    @Query(nativeQuery = true)
+    List<TotalAnnualRevenueDTO> getTotalAnnualRevenue(@Param("businessYear") Integer businessYear);
 }

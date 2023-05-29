@@ -1,6 +1,7 @@
 package com.onlydan.od.restapi.admin;
 
 import com.onlydan.od.dto.AccountsDTO;
+import com.onlydan.od.dto.custom.TopCustomersDTO;
 import com.onlydan.od.services.security.AccountsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -43,6 +46,11 @@ public class AccountsAdminResource implements AccountsAdminAPI {
     public ResponseEntity<AccountsDTO> getAccountByEmail(String email) {
         log.info("Account email: {} fetched", email);
         return ResponseEntity.ok(accountsService.getAccountByEmail(email));
+    }
+
+    @Override
+    public ResponseEntity<List<TopCustomersDTO>> getTopCustomersFromDateRange(Integer topN, LocalDate startDate, LocalDate endDate) {
+        return ResponseEntity.ok(accountsService.getTopCustomersFromDateRange(topN, startDate, endDate));
     }
 
     // DELETE

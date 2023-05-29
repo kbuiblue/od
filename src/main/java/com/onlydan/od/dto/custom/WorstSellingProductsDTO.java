@@ -1,4 +1,4 @@
-package com.onlydan.od.dto;
+package com.onlydan.od.dto.custom;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BestSellingProductsDTO {
+public class WorstSellingProductsDTO {
     private String productName;
-    private Integer totalSales;
+    private Integer salesAmount;
 }

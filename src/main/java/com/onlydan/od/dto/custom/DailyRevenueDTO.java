@@ -1,4 +1,4 @@
-package com.onlydan.od.dto;
+package com.onlydan.od.dto.custom;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

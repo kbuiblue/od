@@ -48,6 +48,18 @@ values
 ('Paypal'),
 ('Digital wallet');
 
+INSERT INTO public.payment_details (payment_date,payment_status,account_id,payment_method_id) VALUES
+	 ('2022-01-03','PROCESSING',3,2),
+	 ('2022-01-10','PAID',6,2),
+	 ('2022-01-28','NOT_PAID',2,4),
+	 ('2022-02-03','PROCESSING',7,1),
+	 ('2022-02-14','PAYMENT_FAILED',9,4),
+	 ('2022-02-16','NOT_PAID',10,4),
+	 ('2022-02-16','PROCESSING',10,2),
+	 ('2022-08-14','NOT_PAID',10,3),
+	 ('2022-09-27','PAID',6,2),
+	 ('2022-09-18','PROCESSING',6,4);
+
 insert into inventory_statuses
 (status_name)
 values
@@ -76,6 +88,18 @@ values
 ('2023-05-29', 'ROLE_USER', 8),
 ('2023-05-29', 'ROLE_USER', 9),
 ('2023-05-29', 'ROLE_USER', 10);
+
+INSERT INTO public.role_assignment (assigned_date,role_name,updated_date,account_id) VALUES
+	 ('2023-05-29 00:00:00','ROLE_ADMIN','2023-05-29 00:00:00',1),
+	 ('2023-05-29 00:00:00','ROLE_USER','2023-05-29 00:00:00',2),
+	 ('2023-05-29 00:00:00','ROLE_USER','2023-05-29 00:00:00',3),
+	 ('2023-05-29 00:00:00','ROLE_USER','2023-05-29 00:00:00',4),
+	 ('2023-05-29 00:00:00','ROLE_USER','2023-05-29 00:00:00',5),
+	 ('2023-05-29 00:00:00','ROLE_USER','2023-05-29 00:00:00',6),
+	 ('2023-05-29 00:00:00','ROLE_USER','2023-05-29 00:00:00',7),
+	 ('2023-05-29 00:00:00','ROLE_USER','2023-05-29 00:00:00',8),
+	 ('2023-05-29 00:00:00','ROLE_USER','2023-05-29 00:00:00',9),
+	 ('2023-05-29 00:00:00','ROLE_USER','2023-05-29 00:00:00',10);
 
 insert into accounts
 (account_name, account_password, first_name, last_name, phone_number, address, email, gender)
@@ -131,6 +155,19 @@ values
 ('agreated1b', '5Vx47Gi', 3, 'Aksel', 'Greated', '547-620-1630', '3 Portage Avenue', 'agreated1b@intel.com', 'MALE'),
 ('cboot1c', 'mj1X6U7e', 3, 'Clio', 'Boot', '115-530-5746', '734 Lake View Way', 'cboot1c@ucoz.ru', 'FEMALE'),
 ('bmacpharlain1d', 'XKZolhTgUJq', 3, 'Brice', 'MacPharlain', '613-470-7531', '112 Sugar Drive', 'bmacpharlain1d@tumblr.com', 'NON_BINARY');
+
+INSERT INTO public.accounts (account_name,account_password,address,creation_date,email,first_name,gender,is_active,last_name,phone_number) VALUES
+	 ('cclelle4','uad5jinPv','50133 Kim Way','2023-05-29 00:00:00','cclelle4@shop-pro.jp','Cherise','FEMALE',true,'Clelle','700-198-2681'),
+	 ('cgoodie5','hocHEa360F','09 Menomonie Avenue','2023-05-29 00:00:00','cgoodie5@t.co','Christophorus','MALE',true,'Goodie','225-345-1902'),
+	 ('aleadstone6','ovj4T34u','77 Russell Center','2023-05-29 00:00:00','aleadstone6@ustream.tv','Atlante','FEMALE',true,'Leadstone','608-725-4610'),
+	 ('ddrieu7','JNKwrFbN76','5229 International Trail','2023-05-29 00:00:00','ddrieu7@discuz.net','Dix','NON_BINARY',true,'Drieu','170-620-9923'),
+	 ('iwillarton8','dtFcwbgcxEl','704 Surrey Drive','2023-05-29 00:00:00','iwillarton8@walmart.com','Ingemar','MALE',true,'Willarton','180-578-9088'),
+	 ('fcutsforth0','$2a$12$mOiqj2tCP0k/OFoddmpzOupf1vJMQ0yzekoP9MGNNjcdUNk1NSVvK','9 Florence Pass','2023-05-29 00:00:00','fcutsforth0@shinystat.com','Fielding','MALE',true,'Cutsforth','556-268-3625'),
+	 ('bqkhanh','$2y$10$TmKITfv0tm08gJ5gtuncZOve2q6AkBUilfDHOvjgQyRZe8.ae18py','312 Trinh Dinh Trong','2023-05-29 00:00:00','kbuiblue@gmail.com','Khanh','MALE',true,'Bui','084-690-1653'),
+	 ('gbrewers1','13DQTc','7 Grover Center','2023-05-29 00:00:00','gbrewers1@samsung.com','Germaine','FEMALE',true,'Brewers','623-743-8058'),
+	 ('bgert2','olru1Sa','2114 Fulton Junction','2023-05-29 00:00:00','bgert2@amazon.co.jp','Barbette','FEMALE',true,'Gert','957-799-7088'),
+	 ('bhallmark3','q50PjKkXbJtR','30991 Milwaukee Drive','2023-05-29 00:00:00','bhallmark3@ebay.com','Beitris','NON_BINARY',true,'Hallmark','723-686-5426');
+
 
 
 insert into payment_details
@@ -243,6 +280,22 @@ values
 (20, 3, 1,50),
 (17, 3, 1, 51);
 
+INSERT INTO public.inventory (inventory_status,shipping_status,product_id,stock_change_id) VALUES
+	 ('IN_STOCK','STARTED',1,1),
+	 ('IN_STOCK','IN_TRANSIT',16,2),
+	 ('IN_STOCK','DELIVERED',4,3),
+	 ('IN_STOCK','DELIVERED',15,4),
+	 ('IN_STOCK','DELIVERED',7,5),
+	 ('IN_STOCK','IN_TRANSIT',13,6),
+	 ('IN_STOCK','STARTED',13,7),
+	 ('IN_STOCK','IN_TRANSIT',2,9),
+	 ('IN_STOCK','IN_TRANSIT',5,10),
+	 ('OUT_OF_STOCK','IN_TRANSIT',15,8);
+INSERT INTO public.inventory (inventory_status,shipping_status,product_id,stock_change_id) VALUES
+	 ('IN_STOCK','IN_TRANSIT',20,11),
+	 ('IN_STOCK','DELIVERED',8,12),
+	 ('IN_STOCK','DELIVERED',9,13);
+
 INSERT INTO stock_changes
 (change_date,change_type,change_amount,remaining_amount)
 VALUES 
@@ -298,6 +351,22 @@ VALUES
 ('2023-04-11','OUTGOING',3,3),
 ('2023-04-12','INCOMING',2,3);
 
+INSERT INTO public.stock_changes (change_amount,change_date,change_type,remaining_amount) VALUES
+	 (2,'2022-04-24','INCOMING',3),
+	 (2,'2022-05-26','INCOMING',2),
+	 (2,'2022-06-01','INCOMING',1),
+	 (3,'2022-04-25','INCOMING',2),
+	 (2,'2022-04-28','OUTGOING',1),
+	 (2,'2022-05-24','OUTGOING',3),
+	 (1,'2022-05-27','OUTGOING',0),
+	 (4,'2022-06-11','OUTGOING',1),
+	 (1,'2022-06-11','OUTGOING',2),
+	 (9,'2022-04-30','OUTGOING',2);
+INSERT INTO public.stock_changes (change_amount,change_date,change_type,remaining_amount) VALUES
+	 (1,'2022-05-03','OUTGOING',1),
+	 (2,'2022-06-06','OUTGOING',1),
+	 (1,'2022-06-11','OUTGOING',2);
+
 insert into order_details
 (is_on_sale, order_date, product_price, product_quantity, sale_percentage, order_id, product_id)
 values
@@ -311,6 +380,18 @@ values
 (FALSE, '2022-10-25', 5000, 1, 0, 1, 8),
 (FALSE, '2022-10-25', 3000, 1, 0, 1, 9),
 (FALSE, '2022-10-25', 2800, 1, 0, 1, 10);
+
+INSERT INTO public.order_details (is_on_sale,order_date,product_price,product_quantity,sale_percentage,order_id,product_id) VALUES
+	 (false,'2022-04-30',1000.0,9,0.0,2,15),
+	 (false,'2022-05-27',6500.0,1,0.0,5,5),
+	 (false,'2022-04-28',7000.0,1,0.0,1,4),
+	 (false,'2022-05-03',6000.0,2,0.0,3,7),
+	 (false,'2022-05-24',1000.0,6,0.0,4,15),
+	 (false,'2022-06-06',6000.0,3,0.0,6,8),
+	 (false,'2022-06-11',6000.0,2,0.0,7,7),
+	 (false,'2022-06-11',500.0,7,0.0,7,20),
+	 (false,'2022-06-11',4000.0,2,0.0,8,9),
+	 (false,'2022-10-25',2800.0,4,0.0,1,10);
 
 insert into orders
 (payment_detail_id)

@@ -104,7 +104,7 @@ INSERT INTO public.role_assignment (assigned_date,role_name,updated_date,account
 insert into accounts
 (account_name, account_password, first_name, last_name, phone_number, address, email, gender)
 values 
-('bqkhanh', 'asdkjE943aw', 'Khanh', 'Bui', '084-690-1653', '312 Trinh Dinh Trong', 'kbuiblue@gmail.com', 'MALE'),
+('bqkhanh', 'asdkjE943aw', 'Khanh', 'Bui', '084-690-1653', '123 Fake Street', 'kbuiblue@gmail.com', 'MALE'),
 ('fcutsforth0', 'iwcKjKGUib', 'Fielding', 'Cutsforth', '556-268-3625', '9 Florence Pass', 'fcutsforth0@shinystat.com', 'MALE'),
 ('gbrewers1', '13DQTc', 'Germaine', 'Brewers', '623-743-8058', '7 Grover Center', 'gbrewers1@samsung.com', 'FEMALE'),
 ('bgert2', 'olru1Sa', 'Barbette', 'Gert', '957-799-7088', '2114 Fulton Junction', 'bgert2@amazon.co.jp', 'FEMALE'),
@@ -157,7 +157,7 @@ values
 ('bmacpharlain1d', 'XKZolhTgUJq', 3, 'Brice', 'MacPharlain', '613-470-7531', '112 Sugar Drive', 'bmacpharlain1d@tumblr.com', 'NON_BINARY');
 
 INSERT INTO public.accounts (account_name,account_password,address,creation_date,email,first_name,gender,is_active,last_name,phone_number) values
-	 ('bqkhanh','$2y$10$TmKITfv0tm08gJ5gtuncZOve2q6AkBUilfDHOvjgQyRZe8.ae18py','312 Trinh Dinh Trong','2023-05-29 00:00:00','kbuiblue@gmail.com','Khanh','MALE',true,'Bui','084-690-1653'),
+	 ('bqkhanh','$2y$10$TmKITfv0tm08gJ5gtuncZOve2q6AkBUilfDHOvjgQyRZe8.ae18py','123 Fake Street','2023-05-29 00:00:00','kbuiblue@gmail.com','Khanh','MALE',true,'Bui','084-690-1653'),
 	 ('cclelle4','$2a$12$mpPqmqGGszToNMyjXOhc1.Ml4BF1BC9F/7nkY0h3FjPMk5vsK17Hm','50133 Kim Way','2023-05-29 00:00:00','cclelle4@shop-pro.jp','Cherise','FEMALE',true,'Clelle','700-198-2681'),
 	 ('cgoodie5','hocHEa360F','09 Menomonie Avenue','2023-05-29 00:00:00','cgoodie5@t.co','Christophorus','MALE',true,'Goodie','225-345-1902'),
 	 ('aleadstone6','ovj4T34u','77 Russell Center','2023-05-29 00:00:00','aleadstone6@ustream.tv','Atlante','FEMALE',true,'Leadstone','608-725-4610'),
@@ -264,8 +264,6 @@ INSERT INTO public.stock_changes (change_amount,change_date,change_type,remainin
 	 (1,'2022-05-03','OUTGOING',1),
 	 (2,'2022-06-06','OUTGOING',1),
 	 (1,'2022-06-11','OUTGOING',2);
-
---INSERT PRODUCT_INFO
 
 insert into inventory 
 (product_id, shipping_status, inventory_status, stock_change_id)
